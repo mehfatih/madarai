@@ -1,31 +1,22 @@
-// @ts-check
 import { defineConfig } from "astro/config";
-import react from "@astrojs/react";
-import tailwindcss from "@tailwindcss/vite";
-import sitemap from "@astrojs/sitemap";
 import cloudflare from "@astrojs/cloudflare";
+import react from "@astrojs/react";
+import mdx from "@astrojs/mdx";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  site: "https://madarai.co",
   output: "server",
   adapter: cloudflare({
-    platformProxy: { enabled: true },
+    platformProxy: { enabled: true }
   }),
+  integrations: [react(), mdx()],
+  vite: {
+    plugins: [tailwindcss()]
+  },
+  site: "https://madarai.co",
   i18n: {
     defaultLocale: "en",
     locales: ["en", "tr", "ar"],
-    routing: { prefixDefaultLocale: false },
-  },
-  integrations: [
-    react(),
-    sitemap({
-      i18n: {
-        defaultLocale: "en",
-        locales: { en: "en-US", tr: "tr-TR", ar: "ar-SA" },
-      },
-    }),
-  ],
-  vite: {
-    plugins: [tailwindcss()],
-  },
+    routing: { prefixDefaultLocale: false }
+  }
 });

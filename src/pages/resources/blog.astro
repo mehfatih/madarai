@@ -1,89 +1,105 @@
 ---
 import MarketingLayout from "../../layouts/MarketingLayout.astro";
-const posts = [
-  { slug: "reduce-app-churn-with-ai", title: "How to Reduce Mobile App Churn by 38% Using AI Early Warning Systems", category: "Retention", readTime: "8 min", date: "May 8, 2026", excerpt: "Churn is the silent killer of subscription apps. Here is how Madar AI detects the early signals — before your users cancel.", color: "crimson" },
-  { slug: "cpi-optimization-mena-2026", title: "CPI Optimization in MENA 2026: Benchmarks, Strategies, and AI Automation", category: "Growth", readTime: "12 min", date: "May 5, 2026", excerpt: "Meta CPI in MENA rose 23% in Q1 2026. Here is the data, the benchmarks, and how top apps are fighting back with AI.", color: "cobalt" },
-  { slug: "roas-forecasting-ai", title: "Predicting ROAS Drops 72 Hours Early: How AI Detects Creative Fatigue", category: "AI", readTime: "10 min", date: "April 30, 2026", excerpt: "Creative fatigue is responsible for 40% of ROAS drops. Learn how multi-agent AI detects it before it costs you money.", color: "purple" },
-  { slug: "ltv-optimization-subscription-apps", title: "LTV Optimization for Subscription Apps: The Complete 2026 Guide", category: "Monetization", readTime: "15 min", date: "April 25, 2026", excerpt: "LTV is the ultimate metric. This guide covers paywall optimization, churn prediction, and AI-driven upsell strategies.", color: "emerald" },
-  { slug: "mobile-growth-benchmarks-q1-2026", title: "Mobile App Growth Benchmarks Q1 2026: CPI, D7 Retention, ROAS by Category", category: "Benchmarks", readTime: "6 min", date: "April 20, 2026", excerpt: "Anonymous data from 2,400+ subscription apps. See where your metrics stand against the industry.", color: "amber" },
-  { slug: "autonomous-ai-actions-mobile-growth", title: "Beyond Dashboards: How Autonomous AI Actions Are Changing Mobile Growth", category: "AI", readTime: "9 min", date: "April 15, 2026", excerpt: "The next era of growth tools does not just tell you what happened — it acts. Here is what autonomous AI means for your app.", color: "cyan" },
-];
-const categories = ["All", "Growth", "AI", "Retention", "Monetization", "Benchmarks"];
+import { getCollection } from "astro:content";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const featured = posts.filter((p) => p.data.featured);
+const regular = posts.filter((p) => !p.data.featured);
+
+const categoryColors: Record<string, string> = {
+  Growth: "#1A56DB",
+  AI: "#7C3AED",
+  Forecasting: "#22D3EE",
+  Benchmarks: "#10B981",
+  Product: "#F59E0B",
+  "Case Study": "#F97316"
+};
+
+function formatDate(d: Date) {
+  return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+}
 ---
-<MarketingLayout title="Blog — Madar AI" description="Growth intelligence for mobile app founders. Strategy, AI, benchmarks, and more.">
-  <div class="blog-hero">
-    <div class="bh-inner">
-      <div class="bh-badge">Growth Intelligence Weekly</div>
-      <h1 class="bh-headline">Insights that move<br/><span class="gradient-text">the needle.</span></h1>
-      <p class="bh-sub">Strategy, AI, benchmarks, and real data from 2,400+ mobile apps — every week.</p>
+
+<MarketingLayout title="Blog — Madar AI" description="Insights on mobile growth, AI, and subscription economics.">
+  <section class="pt-32 pb-12 px-6 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#F97316] mb-3">The Madar Brief</div>
+      <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-4">
+        Intelligence for builders.
+      </h1>
+      <p class="text-white/60 text-lg max-w-2xl mx-auto">
+        Field notes from the frontier of AI-driven mobile growth.
+      </p>
     </div>
-  </div>
-  <div class="blog-main">
-    <div class="bm-inner">
-      <div class="blog-cats">
-        {categories.map((cat) => (
-          <button class={cat === "All" ? "blog-cat blog-cat-active" : "blog-cat"}>{cat}</button>
-        ))}
-      </div>
-      <div class="featured-post">
-        <div class={"fp-category cat-" + posts[0].color}>{posts[0].category}</div>
-        <h2 class="fp-title">{posts[0].title}</h2>
-        <p class="fp-excerpt">{posts[0].excerpt}</p>
-        <div class="fp-meta">
-          <span>{posts[0].date}</span>
-          <span>·</span>
-          <span>{posts[0].readTime} read</span>
+
+    {featured.length > 0 && (
+      <div class="mb-16">
+        <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-4">Featured</div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {featured.slice(0, 2).map((post) => (
+            
+              href={`/resources/blog/${post.slug}`}
+              class="group relative bg-[#161B26] border border-white/5 rounded-2xl p-8 hover:border-white/15 transition-all overflow-hidden"
+            >
+              <div
+                class="absolute top-0 left-0 right-0 h-px opacity-60"
+                style={`background: linear-gradient(90deg, transparent, ${categoryColors[post.data.category]}, transparent)`}
+              ></div>
+              <div class="flex items-center gap-2 mb-4">
+                <span
+                  class="text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded"
+                  style={`background: ${categoryColors[post.data.category]}15; color: ${categoryColors[post.data.category]}`}
+                >
+                  {post.data.category}
+                </span>
+                <span class="text-[11px] font-mono text-white/30">{post.data.readingTime} min read</span>
+              </div>
+              <h2 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[#F97316] transition-colors">
+                {post.data.title}
+              </h2>
+              <p class="text-white/60 text-sm leading-relaxed mb-6">{post.data.description}</p>
+              <div class="flex items-center justify-between text-[11px] font-mono text-white/40">
+                <span>{post.data.author}</span>
+                <span>{formatDate(post.data.pubDate)}</span>
+              </div>
+            </a>
+          ))}
         </div>
-        <a href={"/resources/blog/" + posts[0].slug} class="fp-cta">Read article →</a>
       </div>
-      <div class="posts-grid">
-        {posts.slice(1).map((post) => (
-          <a href={"/resources/blog/" + post.slug} class="post-card">
-            <div class={"pc-category cat-" + post.color}>{post.category}</div>
-            <h3 class="pc-title">{post.title}</h3>
-            <p class="pc-excerpt">{post.excerpt}</p>
-            <div class="pc-meta">
-              <span>{post.date}</span>
-              <span>·</span>
-              <span>{post.readTime} read</span>
-            </div>
-          </a>
-        ))}
+    )}
+
+    {regular.length > 0 && (
+      <div>
+        <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-4">All Posts</div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {regular.map((post) => (
+            
+              href={`/resources/blog/${post.slug}`}
+              class="group bg-[#161B26] border border-white/5 rounded-2xl p-6 hover:border-white/15 transition-all"
+            >
+              <div class="flex items-center gap-2 mb-4">
+                <span
+                  class="text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded"
+                  style={`background: ${categoryColors[post.data.category]}15; color: ${categoryColors[post.data.category]}`}
+                >
+                  {post.data.category}
+                </span>
+              </div>
+              <h3 class="text-lg font-semibold tracking-tight mb-2 group-hover:text-[#F97316] transition-colors">
+                {post.data.title}
+              </h3>
+              <p class="text-white/60 text-sm leading-relaxed mb-6 line-clamp-3">{post.data.description}</p>
+              <div class="flex items-center justify-between text-[11px] font-mono text-white/40 pt-4 border-t border-white/5">
+                <span>{formatDate(post.data.pubDate)}</span>
+                <span>{post.data.readingTime} min</span>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
-  </div>
+    )}
+  </section>
 </MarketingLayout>
-<style>
-.blog-hero { padding: 120px 24px 60px; background: linear-gradient(180deg,#0F1117,#141929); text-align: center; }
-.bh-inner { max-width: 640px; margin: 0 auto; }
-.bh-badge { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #F97316; background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.25); padding: 4px 16px; border-radius: 999px; margin-bottom: 20px; }
-.bh-headline { font-size: clamp(2.5rem,5vw,3.5rem); font-weight: 800; color: white; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 16px; }
-.bh-sub { font-size: 1.05rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
-.blog-main { padding: 60px 24px 80px; background: #F8F9FA; }
-.bm-inner { max-width: 1100px; margin: 0 auto; }
-.blog-cats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
-.blog-cat { padding: 8px 18px; background: white; border: 1px solid #E5E7EB; border-radius: 999px; font-size: 13px; font-weight: 600; color: #6B7280; cursor: pointer; transition: all 0.15s; }
-.blog-cat:hover,.blog-cat-active { background: #F97316; color: white; border-color: #F97316; }
-.featured-post { background: white; border: 1px solid #E5E7EB; border-radius: 20px; padding: 48px; margin-bottom: 32px; box-shadow: 0 4px 24px rgba(0,0,0,0.04); }
-.fp-category { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; margin-bottom: 16px; }
-.fp-title { font-size: clamp(1.4rem,3vw,2rem); font-weight: 800; color: #111827; line-height: 1.25; margin-bottom: 14px; }
-.fp-excerpt { font-size: 16px; color: #6B7280; line-height: 1.7; margin-bottom: 16px; max-width: 700px; }
-.fp-meta { font-size: 13px; color: #9CA3AF; display: flex; gap: 8px; margin-bottom: 20px; }
-.fp-cta { display: inline-flex; padding: 12px 24px; background: #111827; color: white; text-decoration: none; font-size: 14px; font-weight: 700; border-radius: 999px; transition: all 0.15s; }
-.fp-cta:hover { background: #F97316; }
-.posts-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-.post-card { background: white; border: 1px solid #E5E7EB; border-radius: 16px; padding: 28px; text-decoration: none; transition: all 0.15s; display: flex; flex-direction: column; }
-.post-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,0.08); border-color: #F97316; }
-.pc-category { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 999px; margin-bottom: 12px; }
-.pc-title { font-size: 16px; font-weight: 700; color: #111827; line-height: 1.35; margin-bottom: 10px; flex: 1; }
-.pc-excerpt { font-size: 13px; color: #6B7280; line-height: 1.6; margin-bottom: 14px; }
-.pc-meta { font-size: 12px; color: #9CA3AF; display: flex; gap: 6px; margin-top: auto; }
-.cat-cobalt  { background: rgba(26,86,219,0.08);  color: #1A56DB; }
-.cat-emerald { background: rgba(16,185,129,0.08); color: #059669; }
-.cat-purple  { background: rgba(124,58,237,0.08); color: #7C3AED; }
-.cat-amber   { background: rgba(245,158,11,0.08); color: #D97706; }
-.cat-crimson { background: rgba(220,38,38,0.08);  color: #DC2626; }
-.cat-cyan    { background: rgba(34,211,238,0.08); color: #0891B2; }
-@media (max-width: 1024px) { .posts-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 640px) { .posts-grid { grid-template-columns: 1fr; } .featured-post { padding: 28px; } }
-</style>

@@ -1,0 +1,175 @@
+---
+import MarketingLayout from "../../layouts/MarketingLayout.astro";
+---
+
+<MarketingLayout title="Contact — Madar AI" description="Talk to the team building the AI Growth Operating System for mobile apps.">
+  <section class="pt-32 pb-24 px-6 max-w-6xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Left -->
+      <div>
+        <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#F97316] mb-3">Contact</div>
+        <h1 class="text-5xl font-semibold tracking-tight mb-6 leading-tight">
+          Talk to a human.<br/>
+          <span class="text-white/40">Then talk to the brain.</span>
+        </h1>
+        <p class="text-white/60 text-lg leading-relaxed mb-10">
+          Questions, partnerships, press, or just curious how Madar works under the hood — we read every message.
+        </p>
+
+        <div class="space-y-5">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-[#F97316]/10 border border-[#F97316]/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-[#F97316]" viewBox="0 0 16 16" fill="none">
+                <path d="M2 3.5L8 8.5L14 3.5 M2 3.5C2 2.95 2.45 2.5 3 2.5H13C13.55 2.5 14 2.95 14 3.5V12.5C14 13.05 13.55 13.5 13 13.5H3C2.45 13.5 2 13.05 2 12.5V3.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-1">General</div>
+              <a href="mailto:hello@madarai.co" class="text-white hover:text-[#F97316] transition-colors">hello@madarai.co</a>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-[#7C3AED]/10 border border-[#7C3AED]/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-[#7C3AED]" viewBox="0 0 16 16" fill="none">
+                <path d="M8 1.5C5.79 1.5 4 3.29 4 5.5C4 8.5 8 14.5 8 14.5C8 14.5 12 8.5 12 5.5C12 3.29 10.21 1.5 8 1.5Z M8 7C8.83 7 9.5 6.33 9.5 5.5C9.5 4.67 8.83 4 8 4C7.17 4 6.5 4.67 6.5 5.5C6.5 6.33 7.17 7 8 7Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-1">Headquarters</div>
+              <div class="text-white">Istanbul, Türkiye</div>
+              <div class="text-[11px] font-mono text-white/40 mt-0.5">Zyrix Global Technologies</div>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-lg bg-[#10B981]/10 border border-[#10B981]/20 flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-[#10B981]" viewBox="0 0 16 16" fill="none">
+                <path d="M8 4V8L10.5 9.5 M14 8C14 11.31 11.31 14 8 14C4.69 14 2 11.31 2 8C2 4.69 4.69 2 8 2C11.31 2 14 4.69 14 8Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-1">Response time</div>
+              <div class="text-white">Within 24 hours</div>
+              <div class="text-[11px] font-mono text-white/40 mt-0.5">Mon–Fri, GMT+3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right form -->
+      <div>
+        <form id="contact-form" class="bg-[#161B26] border border-white/5 rounded-2xl p-8 space-y-5">
+          <div>
+            <label class="block text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-2">Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              class="w-full bg-[#0F1117] border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:border-[#F97316] focus:outline-none transition-colors"
+              placeholder="Your full name"
+            />
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-2">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              class="w-full bg-[#0F1117] border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:border-[#F97316] focus:outline-none transition-colors"
+              placeholder="you@company.com"
+            />
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-2">Company (optional)</label>
+            <input
+              type="text"
+              name="company"
+              class="w-full bg-[#0F1117] border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:border-[#F97316] focus:outline-none transition-colors"
+              placeholder="App or company name"
+            />
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-2">Topic</label>
+            <select
+              name="topic"
+              required
+              class="w-full bg-[#0F1117] border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:border-[#F97316] focus:outline-none transition-colors"
+            >
+              <option value="">Select a topic</option>
+              <option value="sales">Sales / Demo</option>
+              <option value="partnership">Partnership</option>
+              <option value="press">Press / Media</option>
+              <option value="support">Support</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-2">Message</label>
+            <textarea
+              name="message"
+              required
+              rows="5"
+              class="w-full bg-[#0F1117] border border-white/10 rounded-lg px-4 py-3 text-sm text-white placeholder-white/30 focus:border-[#F97316] focus:outline-none transition-colors resize-none"
+              placeholder="Tell us what's on your mind..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full px-6 py-3 rounded-lg bg-[#F97316] text-white text-sm font-medium hover:bg-[#F97316]/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span data-btn-text>Send message</span>
+          </button>
+
+          <div id="contact-status" class="hidden text-sm text-center py-2"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+    const status = document.getElementById("contact-status") as HTMLDivElement;
+    const btn = form.querySelector("button[type=submit]") as HTMLButtonElement;
+    const btnText = form.querySelector("[data-btn-text]") as HTMLSpanElement;
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btnText.textContent = "Sending...";
+      status.className = "hidden";
+
+      const fd = new FormData(form);
+      const payload = Object.fromEntries(fd.entries());
+
+      try {
+        const res = await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+          form.reset();
+          status.className = "text-sm text-center py-2 text-[#10B981]";
+          status.textContent = "Message sent. We'll get back within 24 hours.";
+          btnText.textContent = "Send message";
+        } else {
+          throw new Error(data.error || "Failed to send");
+        }
+      } catch (err) {
+        status.className = "text-sm text-center py-2 text-[#DC2626]";
+        status.textContent = "Something went wrong. Try again or email hello@madarai.co.";
+        btnText.textContent = "Send message";
+      } finally {
+        btn.disabled = false;
+      }
+    });
+  </script>
+</MarketingLayout>

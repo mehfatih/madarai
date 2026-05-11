@@ -1,0 +1,142 @@
+---
+import MarketingLayout from "../../layouts/MarketingLayout.astro";
+
+const facts = [
+  { label: "Founded", value: "2025" },
+  { label: "Headquarters", value: "Istanbul, Türkiye" },
+  { label: "Parent Company", value: "Zyrix Global Technologies" },
+  { label: "Founder", value: "Mehmet" },
+  { label: "Category", value: "AI Growth OS" },
+  { label: "Markets", value: "MENA · Türkiye · EU · Global" }
+];
+
+const assets = [
+  { name: "Logo · Light", desc: "PNG, SVG · For dark backgrounds", color: "#F97316" },
+  { name: "Logo · Dark", desc: "PNG, SVG · For light backgrounds", color: "#0F1117" },
+  { name: "Wordmark", desc: "PNG, SVG · Horizontal lockup", color: "#7C3AED" },
+  { name: "Product Screenshots", desc: "ZIP · Dashboard, Insights, Forecast", color: "#10B981" }
+];
+
+const palette = [
+  { name: "Orange", hex: "#F97316", role: "Primary brand" },
+  { name: "Cobalt", hex: "#1A56DB", role: "Growth" },
+  { name: "Emerald", hex: "#10B981", role: "Revenue" },
+  { name: "Purple", hex: "#7C3AED", role: "AI" },
+  { name: "Amber", hex: "#F59E0B", role: "Alerts" },
+  { name: "Crimson", hex: "#DC2626", role: "Risks" },
+  { name: "Cyan", hex: "#22D3EE", role: "Forecasting" }
+];
+---
+
+<MarketingLayout title="Press — Madar AI" description="Press kit, brand assets, and media resources for Madar AI.">
+  <section class="pt-32 pb-16 px-6 max-w-6xl mx-auto">
+    <div class="text-center mb-16">
+      <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#F97316] mb-3">Press & Media</div>
+      <h1 class="text-5xl md:text-6xl font-semibold tracking-tight mb-4">
+        Tell the story right.
+      </h1>
+      <p class="text-white/60 text-lg max-w-2xl mx-auto">
+        Everything you need to write, design, and report about Madar AI.
+      </p>
+    </div>
+
+    <!-- Boilerplate -->
+    <div class="bg-[#161B26] border border-white/5 rounded-2xl p-8 mb-12">
+      <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-4">Company Boilerplate</div>
+      <p class="text-white/80 leading-relaxed text-lg">
+        Madar AI is the AI Growth Operating System for subscription mobile apps. Built by Zyrix Global Technologies in Istanbul, Madar replaces the patchwork of dashboards founders rely on today with an autonomous brain that watches every metric across every platform — and tells operators the single most important thing to do each day. The company serves mobile app founders across MENA, Türkiye, Europe, and the global market.
+      </p>
+      <button data-copy-boilerplate class="mt-6 text-xs font-mono text-[#F97316] hover:underline">
+        Copy boilerplate →
+      </button>
+    </div>
+
+    <!-- Quick Facts -->
+    <div class="mb-12">
+      <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-4">Quick Facts</div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+        {facts.map((f) => (
+          <div class="bg-[#161B26] border border-white/5 rounded-xl p-5">
+            <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-1.5">{f.label}</div>
+            <div class="text-sm text-white font-medium">{f.value}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Brand Assets -->
+    <div class="mb-12">
+      <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-4">Brand Assets</div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        {assets.map((a) => (
+          <div class="group bg-[#161B26] border border-white/5 rounded-xl p-5 hover:border-white/15 transition-colors flex items-center justify-between">
+            <div class="flex items-center gap-4">
+              <div
+                class="w-12 h-12 rounded-lg flex items-center justify-center font-bold text-white"
+                style={`background: linear-gradient(135deg, ${a.color}, ${a.color}aa)`}
+              >
+                M
+              </div>
+              <div>
+                <div class="text-sm text-white font-medium">{a.name}</div>
+                <div class="text-[11px] font-mono text-white/40 mt-0.5">{a.desc}</div>
+              </div>
+            </div>
+            <button class="px-3 py-1.5 rounded-lg border border-white/10 text-xs text-white/70 hover:text-white hover:border-white/20 transition-colors font-mono">
+              Download
+            </button>
+          </div>
+        ))}
+      </div>
+      <p class="text-[11px] font-mono text-white/30 mt-3 text-center">
+        Brand asset bundles available on request — email <a href="mailto:press@madarai.co" class="text-[#F97316] hover:underline">press@madarai.co</a>
+      </p>
+    </div>
+
+    <!-- Color Palette -->
+    <div class="mb-12">
+      <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-4">Color Palette</div>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3">
+        {palette.map((c) => (
+          <div class="bg-[#161B26] border border-white/5 rounded-xl p-4 text-center">
+            <div
+              class="w-full aspect-square rounded-lg mb-3"
+              style={`background: ${c.hex}; box-shadow: 0 0 24px ${c.hex}30`}
+            ></div>
+            <div class="text-xs text-white font-medium">{c.name}</div>
+            <div class="text-[10px] font-mono text-white/40 mt-0.5">{c.hex}</div>
+            <div class="text-[10px] font-mono text-white/30 mt-1">{c.role}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Press Contact -->
+    <div class="bg-gradient-to-br from-[#161B26] to-[#1E2535] border border-[#F97316]/20 rounded-2xl p-8 text-center">
+      <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#F97316] mb-3">Press Inquiries</div>
+      <h3 class="text-2xl font-semibold tracking-tight mb-3">Need an interview or quote?</h3>
+      <p class="text-white/60 text-sm mb-6 max-w-md mx-auto">
+        We respond to press requests within 24 hours, Monday through Friday.
+      </p>
+      
+        href="mailto:press@madarai.co"
+        class="inline-block px-6 py-3 rounded-lg bg-[#F97316] text-white text-sm font-medium hover:bg-[#F97316]/90 transition-colors"
+      >
+        press@madarai.co
+      </a>
+    </div>
+  </section>
+
+  <script>
+    document.querySelector("[data-copy-boilerplate]")?.addEventListener("click", async (e) => {
+      const text = "Madar AI is the AI Growth Operating System for subscription mobile apps. Built by Zyrix Global Technologies in Istanbul, Madar replaces the patchwork of dashboards founders rely on today with an autonomous brain that watches every metric across every platform — and tells operators the single most important thing to do each day. The company serves mobile app founders across MENA, Türkiye, Europe, and the global market.";
+      try {
+        await navigator.clipboard.writeText(text);
+        const btn = e.target as HTMLButtonElement;
+        const original = btn.textContent;
+        btn.textContent = "Copied ✓";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      } catch {}
+    });
+  </script>
+</MarketingLayout>

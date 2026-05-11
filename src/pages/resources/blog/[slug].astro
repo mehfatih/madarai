@@ -1,0 +1,149 @@
+---
+import MarketingLayout from "../../../layouts/MarketingLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+type Props = { post: CollectionEntry<"blog"> };
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const categoryColors: Record<string, string> = {
+  Growth: "#1A56DB",
+  AI: "#7C3AED",
+  Forecasting: "#22D3EE",
+  Benchmarks: "#10B981",
+  Product: "#F59E0B",
+  "Case Study": "#F97316"
+};
+
+const accent = categoryColors[post.data.category];
+
+const formatted = post.data.pubDate.toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric"
+});
+---
+
+<MarketingLayout title={`${post.data.title} — Madar AI`} description={post.data.description}>
+  <article class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
+    <div class="mb-8">
+      <a href="/resources/blog" class="text-[11px] font-mono text-white/40 hover:text-white/70 transition-colors">
+        ← Back to blog
+      </a>
+    </div>
+
+    <header class="mb-12">
+      <div class="flex items-center gap-2 mb-6">
+        <span
+          class="text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded"
+          style={`background: ${accent}15; color: ${accent}`}
+        >
+          {post.data.category}
+        </span>
+        <span class="text-[11px] font-mono text-white/30">{post.data.readingTime} min read</span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-semibold tracking-tight mb-6 leading-tight">
+        {post.data.title}
+      </h1>
+
+      <p class="text-white/60 text-lg leading-relaxed mb-8">{post.data.description}</p>
+
+      <div class="flex items-center justify-between pb-8 border-b border-white/5">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-8 h-8 rounded-lg flex items-center justify-center font-semibold text-xs text-white"
+            style={`background: linear-gradient(135deg, ${accent}, #F97316)`}
+          >
+            {post.data.author.split(" ").map((s) => s[0]).join("").slice(0, 2).toUpperCase()}
+          </div>
+          <div class="text-sm">
+            <div class="text-white/90">{post.data.author}</div>
+            <div class="text-[11px] font-mono text-white/40">{formatted}</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="prose-madar">
+      <Content />
+    </div>
+
+    <footer class="mt-16 pt-8 border-t border-white/5">
+      <div class="bg-[#161B26] border border-white/5 rounded-2xl p-8 text-center">
+        <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#F97316] mb-3">Ready to see it work?</div>
+        <h3 class="text-2xl font-semibold tracking-tight mb-3">Stop guessing. Start knowing.</h3>
+        <p class="text-white/60 text-sm mb-6 max-w-md mx-auto">
+          Madar AI watches your numbers around the clock and tells you the one thing that matters most.
+        </p>
+        
+          href="/signup"
+          class="inline-block px-6 py-3 rounded-lg bg-[#F97316] text-white text-sm font-medium hover:bg-[#F97316]/90 transition-colors"
+        >
+          Start free trial
+        </a>
+      </div>
+    </footer>
+  </article>
+
+  <style is:global>
+    .prose-madar h1 { display: none; }
+    .prose-madar h2 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    .prose-madar h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      color: white;
+    }
+    .prose-madar p {
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      font-size: 1.0625rem;
+    }
+    .prose-madar ul, .prose-madar ol {
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 1.5rem;
+      padding-left: 1.5rem;
+    }
+    .prose-madar ul li { list-style: disc; margin-bottom: 0.5rem; line-height: 1.7; }
+    .prose-madar ol li { list-style: decimal; margin-bottom: 0.5rem; line-height: 1.7; }
+    .prose-madar strong { color: white; font-weight: 600; }
+    .prose-madar a { color: #F97316; text-decoration: underline; text-underline-offset: 3px; }
+    .prose-madar a:hover { color: #FB923C; }
+    .prose-madar blockquote {
+      border-left: 3px solid #F97316;
+      padding-left: 1.25rem;
+      margin: 2rem 0;
+      color: rgba(255,255,255,0.85);
+      font-style: italic;
+      font-size: 1.125rem;
+    }
+    .prose-madar code {
+      background: rgba(255,255,255,0.05);
+      padding: 0.125rem 0.375rem;
+      border-radius: 0.25rem;
+      font-size: 0.875em;
+      font-family: 'JetBrains Mono', monospace;
+      color: #F97316;
+    }
+    .prose-madar hr { border-color: rgba(255,255,255,0.05); margin: 3rem 0; }
+  </style>
+</MarketingLayout>
