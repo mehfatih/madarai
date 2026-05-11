@@ -1,0 +1,312 @@
+---
+import DashboardLayout from "../layouts/DashboardLayout.astro";
+import { createClient } from "@supabase/supabase-js";
+
+// --- Auth gate ---------------------------------------------------------
+const accessToken = Astro.cookies.get("sb-access-token")?.value;
+
+if (!accessToken) {
+  return Astro.redirect("/login");
+}
+
+const supabase = createClient(
+  import.meta.env.PUBLIC_SUPABASE_URL,
+  import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+);
+
+const { data: userData, error: userError } = await supabase.auth.getUser(accessToken);
+
+if (userError || !userData?.user) {
+  Astro.cookies.delete("sb-access-token", { path: "/" });
+  Astro.cookies.delete("sb-refresh-token", { path: "/" });
+  return Astro.redirect("/login");
+}
+
+const user = userData.user;
+
+const { data: profile } = await supabase
+  .from("profiles")
+  .select("*")
+  .eq("id", user.id)
+  .single();
+
+// --- Synthetic data (replace when backend ships) -----------------------
+const firstName = profile?.full_name?.split(" ")[0] || "";
+
+const metrics = [
+  {
+    label: "Monthly Recurring Revenue",
+    value: "$47,820",
+    delta: "+12.4%",
+    positive: true,
+    accent: "#10B981",
+    series: [22, 28, 24, 31, 29, 35, 33, 40, 38, 44, 42, 48],
+  },
+  {
+    label: "Return On Ad Spend",
+    value: "3.24x",
+    delta: "+0.4x",
+    positive: true,
+    accent: "#1A56DB",
+    series: [2.4, 2.6, 2.5, 2.7, 2.8, 2.9, 2.7, 3.0, 3.1, 3.0, 3.2, 3.24],
+  },
+  {
+    label: "Monthly Churn",
+    value: "4.8%",
+    delta: "-0.6%",
+    positive: true,
+    accent: "#DC2626",
+    series: [6.2, 6.0, 5.8, 5.9, 5.6, 5.4, 5.5, 5.2, 5.0, 5.1, 4.9, 4.8],
+  },
+  {
+    label: "Lifetime Value",
+    value: "$287",
+    delta: "+18.2%",
+    positive: true,
+    accent: "#7C3AED",
+    series: [180, 195, 205, 210, 220, 235, 240, 250, 258, 265, 278, 287],
+  },
+];
+
+function sparkline(values: number[], w = 120, h = 40) {
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || 1;
+  const step = w / (values.length - 1);
+  return values
+    .map((v, i) => {
+      const x = i * step;
+      const y = h - ((v - min) / range) * h;
+      return `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
+    })
+    .join(" ");
+}
+
+const today = new Date().toLocaleDateString("en-US", {
+  weekday: "long",
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
+---
+
+<DashboardLayout title="Overview" user={user} profile={profile}>
+  <!-- Top bar -->
+  <header class="border-b border-white/5 px-8 h-16 flex items-center justify-between sticky top-0 bg-[#0F1117]/95 backdrop-blur-sm z-10">
+    <div class="flex items-center gap-3">
+      <h1 class="text-lg font-semibold tracking-tight">Overview</h1>
+      <span class="text-[10px] font-mono text-[#10B981] px-2 py-0.5 rounded border border-[#10B981]/20 bg-[#10B981]/5 uppercase tracking-widest">Live</span>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <button class="px-3 py-1.5 rounded-lg border border-white/10 text-sm text-white/70 hover:text-white hover:border-white/20 transition-colors flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#F97316]"></span>
+        Demo App
+        <svg class="w-3 h-3 opacity-50" viewBox="0 0 12 12" fill="none">
+          <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="px-3 py-1.5 rounded-lg border border-white/10 text-sm text-white/70 hover:text-white hover:border-white/20 transition-colors font-mono">
+        Last 30 days
+      </button>
+      <button class="w-8 h-8 rounded-lg border border-white/10 text-white/70 hover:text-white hover:border-white/20 transition-colors flex items-center justify-center relative">
+        <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
+          <path d="M8 1.5C5.79 1.5 4 3.29 4 5.5V8L2.5 10.5H13.5L12 8V5.5C12 3.29 10.21 1.5 8 1.5Z M6 11.5C6 12.6 6.9 13.5 8 13.5C9.1 13.5 10 12.6 10 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-[#F97316]"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="p-8 space-y-6 max-w-[1600px]">
+    <!-- Welcome row -->
+    <div class="flex items-end justify-between flex-wrap gap-4">
+      <div>
+        <div class="text-[10px] font-mono uppercase tracking-[0.2em] text-white/40 mb-1.5">Operator Console</div>
+        <h2 class="text-2xl font-semibold tracking-tight">
+          Good to see you{firstName ? `, ${firstName}` : ""}.
+        </h2>
+      </div>
+      <div class="text-xs font-mono text-white/40">{today}</div>
+    </div>
+
+    <!-- Metric cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      {metrics.map((m, idx) => (
+        <div class="group relative bg-[#161B26] border border-white/5 rounded-2xl p-5 hover:border-white/10 transition-colors overflow-hidden">
+          <div
+            class="absolute top-0 left-0 right-0 h-px opacity-60"
+            style={`background: linear-gradient(90deg, transparent, ${m.accent}, transparent)`}
+          ></div>
+
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40">{m.label}</span>
+            <span
+              class="w-1.5 h-1.5 rounded-full"
+              style={`background: ${m.accent}; box-shadow: 0 0 8px ${m.accent}`}
+            ></span>
+          </div>
+
+          <div class="flex items-baseline gap-2 mb-3">
+            <span class="text-3xl font-semibold tracking-tight font-mono">{m.value}</span>
+            <span class={`text-xs font-mono ${m.positive ? "text-[#10B981]" : "text-[#DC2626]"}`}>
+              {m.delta}
+            </span>
+          </div>
+
+          <svg viewBox="0 0 120 40" class="w-full h-10" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id={`grad-${idx}`} x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color={m.accent} stop-opacity="0.35" />
+                <stop offset="100%" stop-color={m.accent} stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <path d={`${sparkline(m.series)} L 120 40 L 0 40 Z`} fill={`url(#grad-${idx})`} />
+            <path
+              d={sparkline(m.series)}
+              fill="none"
+              stroke={m.accent}
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      ))}
+    </div>
+
+    <!-- AI Insight -->
+    <div class="relative bg-gradient-to-br from-[#161B26] to-[#1E2535] border border-[#7C3AED]/20 rounded-2xl p-6 overflow-hidden">
+      <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#7C3AED]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="relative">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#7C3AED] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-[#7C3AED]"></span>
+          </span>
+          <span class="text-[10px] font-mono uppercase tracking-[0.2em] text-[#7C3AED]">AI Insight</span>
+          <span class="text-[10px] font-mono text-white/30 uppercase tracking-widest">Confidence 87%</span>
+        </div>
+
+        <h3 class="text-xl font-semibold tracking-tight mb-2 max-w-3xl">
+          Your Tier 1 GCC paid campaigns are about to hit diminishing returns.
+        </h3>
+
+        <p class="text-white/60 text-sm leading-relaxed mb-5 max-w-3xl">
+          Spend on Meta Saudi Arabia rose 34% in the last 7 days while D7 ROAS softened from 2.8x to 2.1x. Audience
+          saturation in the 25-34 male segment is the most likely cause. Reallocating 30% of that budget to UAE Snapchat
+          (currently at 4.1x D7 ROAS with capacity) is projected to recover $8,400 monthly revenue.
+        </p>
+
+        <div class="flex items-center gap-2 flex-wrap">
+          <button class="px-4 py-2 rounded-lg bg-[#F97316] text-white text-sm font-medium hover:bg-[#F97316]/90 transition-colors">
+            Apply reallocation
+          </button>
+          <button class="px-4 py-2 rounded-lg border border-white/10 text-white/80 text-sm font-medium hover:bg-white/5 hover:border-white/20 transition-colors">
+            Investigate
+          </button>
+          <button class="px-4 py-2 rounded-lg text-white/40 text-sm hover:text-white/70 transition-colors">
+            Dismiss
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Secondary row -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <!-- Active signals -->
+      <div class="bg-[#161B26] border border-white/5 rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40">Active Signals</span>
+          <span class="text-xs font-mono text-white/30">3</span>
+        </div>
+        <ul class="space-y-3">
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#F59E0B] mt-1.5 flex-shrink-0" style="box-shadow: 0 0 6px #F59E0B"></span>
+            <div class="text-sm">
+              <div class="text-white/90">CPI rising on Google UAC</div>
+              <div class="text-[11px] text-white/40 font-mono">2 hours ago</div>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#DC2626] mt-1.5 flex-shrink-0" style="box-shadow: 0 0 6px #DC2626"></span>
+            <div class="text-sm">
+              <div class="text-white/90">Trial-to-paid dropped 11%</div>
+              <div class="text-[11px] text-white/40 font-mono">5 hours ago</div>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#22D3EE] mt-1.5 flex-shrink-0" style="box-shadow: 0 0 6px #22D3EE"></span>
+            <div class="text-sm">
+              <div class="text-white/90">New cohort outperforms baseline by 22%</div>
+              <div class="text-[11px] text-white/40 font-mono">Yesterday</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Forecast -->
+      <div class="bg-[#161B26] border border-white/5 rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40">90-day Forecast</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-[#22D3EE]" style="box-shadow: 0 0 8px #22D3EE"></span>
+        </div>
+        <div class="text-2xl font-semibold font-mono tracking-tight mb-1">$612,400</div>
+        <div class="text-xs text-white/40 mb-4 font-mono">Projected MRR · ±8.2%</div>
+        <div class="space-y-2 text-xs font-mono">
+          <div class="flex justify-between text-white/60">
+            <span>Best case</span>
+            <span class="text-[#10B981]">$667,300</span>
+          </div>
+          <div class="flex justify-between text-white/60">
+            <span>Likely</span>
+            <span class="text-white">$612,400</span>
+          </div>
+          <div class="flex justify-between text-white/60">
+            <span>Worst case</span>
+            <span class="text-[#DC2626]">$561,900</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connect data -->
+      <div class="bg-[#161B26] border border-white/5 rounded-2xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40">Connect Data</span>
+          <span class="text-xs font-mono text-[#F97316]">2 of 4</span>
+        </div>
+        <ul class="space-y-2.5 text-sm">
+          <li class="flex items-center gap-2.5 text-white/40">
+            <span class="w-4 h-4 rounded-full bg-[#10B981]/15 border border-[#10B981] flex items-center justify-center flex-shrink-0">
+              <svg class="w-2.5 h-2.5 text-[#10B981]" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5L4 7L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="line-through">App Store Connect</span>
+          </li>
+          <li class="flex items-center gap-2.5 text-white/40">
+            <span class="w-4 h-4 rounded-full bg-[#10B981]/15 border border-[#10B981] flex items-center justify-center flex-shrink-0">
+              <svg class="w-2.5 h-2.5 text-[#10B981]" viewBox="0 0 10 10" fill="none">
+                <path d="M2 5L4 7L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span class="line-through">Google Play Console</span>
+          </li>
+          <li class="flex items-center gap-2.5 text-white/90">
+            <span class="w-4 h-4 rounded-full border border-white/20 flex-shrink-0"></span>
+            <span>RevenueCat</span>
+          </li>
+          <li class="flex items-center gap-2.5 text-white/90">
+            <span class="w-4 h-4 rounded-full border border-white/20 flex-shrink-0"></span>
+            <span>AppsFlyer</span>
+          </li>
+        </ul>
+        <a href="/dashboard/integrations" class="mt-4 inline-block text-xs font-mono text-[#F97316] hover:underline">
+          Continue setup →
+        </a>
+      </div>
+    </div>
+  </div>
+</DashboardLayout>

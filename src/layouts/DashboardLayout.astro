@@ -1,0 +1,126 @@
+---
+import "../styles/global.css";
+
+export interface Props {
+  title?: string;
+  user?: any;
+  profile?: any;
+}
+
+const { title = "Dashboard", user, profile } = Astro.props;
+
+const displayName = profile?.full_name || user?.email?.split("@")[0] || "Operator";
+const initials = (profile?.full_name || user?.email || "U")
+  .split(/[\s@]/)
+  .filter(Boolean)
+  .map((n: string) => n[0])
+  .slice(0, 2)
+  .join("")
+  .toUpperCase();
+
+const path = Astro.url.pathname;
+const navItems = [
+  { href: "/dashboard", label: "Overview" },
+  { href: "/dashboard/benchmarks", label: "Benchmarks" },
+  { href: "/dashboard/forecasting", label: "Forecasting" },
+  { href: "/dashboard/autonomous", label: "Autonomous" },
+  { href: "/dashboard/cohorts", label: "Cohorts" },
+  { href: "/dashboard/integrations", label: "Integrations" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{title} — Madar AI</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body class="bg-[#0F1117] text-white antialiased font-sans">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="w-60 flex-shrink-0 border-r border-white/5 bg-[#0F1117] flex flex-col sticky top-0 h-screen">
+        <!-- Logo -->
+        <div class="px-6 py-5 border-b border-white/5">
+          <a href="/dashboard" class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#F97316] to-[#DC2626] flex items-center justify-center font-bold text-white text-sm">
+              M
+            </div>
+            <div class="flex flex-col leading-tight">
+              <span class="text-sm font-semibold tracking-tight">Madar AI</span>
+              <span class="text-[10px] text-white/40 font-mono uppercase tracking-widest">Console</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Nav -->
+        <nav class="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
+          {navItems.map((item) => {
+            const active = path === item.href || (item.href !== "/dashboard" && path.startsWith(item.href));
+            return (
+              
+                href={item.href}
+                class={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
+                  active
+                    ? "bg-white/[0.06] text-white"
+                    : "text-white/55 hover:text-white hover:bg-white/[0.03]"
+                }`}
+              >
+                <span class={`w-1.5 h-1.5 rounded-full ${active ? "bg-[#F97316]" : "bg-current opacity-50"}`}></span>
+                <span>{item.label}</span>
+              </a>
+            );
+          })}
+        </nav>
+
+        <!-- User block -->
+        <div class="border-t border-white/5 p-3 flex items-center gap-2">
+          <div class="flex items-center gap-3 flex-1 min-w-0 px-2 py-1.5">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-[#7C3AED] to-[#1A56DB] flex items-center justify-center font-semibold text-xs text-white flex-shrink-0">
+              {initials}
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="text-sm font-medium truncate">{displayName}</div>
+              <div class="text-[11px] text-white/40 truncate font-mono">{user?.email}</div>
+            </div>
+          </div>
+          <button
+            data-signout
+            title="Sign out"
+            class="w-8 h-8 rounded-lg text-white/40 hover:text-white hover:bg-white/5 transition-colors flex items-center justify-center flex-shrink-0"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 16 16" fill="none">
+              <path
+                d="M6 14H3.5C2.67 14 2 13.33 2 12.5V3.5C2 2.67 2.67 2 3.5 2H6 M10 11L13 8L10 5 M13 8H6"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="flex-1 min-w-0">
+        <slot />
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("click", async (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest("[data-signout]")) {
+          try {
+            await fetch("/api/auth/logout", { method: "POST" });
+          } finally {
+            window.location.href = "/";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
