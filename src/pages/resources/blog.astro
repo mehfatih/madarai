@@ -21,6 +21,10 @@ const categoryColors: Record<string, string> = {
 function formatDate(d: Date) {
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
+
+function slugify(id: string) {
+  return id.replace(/\.(md|mdx)$/, "");
+}
 ---
 
 <MarketingLayout title="Blog — Madar AI" description="Insights on mobile growth, AI, and subscription economics.">
@@ -41,7 +45,7 @@ function formatDate(d: Date) {
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {featured.slice(0, 2).map((post) => (
             
-              href={`/resources/blog/${post.slug}`}
+              href={`/resources/blog/${slugify(post.id)}`}
               class="group relative bg-[#161B26] border border-white/5 rounded-2xl p-8 hover:border-white/15 transition-all overflow-hidden"
             >
               <div
@@ -77,7 +81,7 @@ function formatDate(d: Date) {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {regular.map((post) => (
             
-              href={`/resources/blog/${post.slug}`}
+              href={`/resources/blog/${slugify(post.id)}`}
               class="group bg-[#161B26] border border-white/5 rounded-2xl p-6 hover:border-white/15 transition-all"
             >
               <div class="flex items-center gap-2 mb-4">

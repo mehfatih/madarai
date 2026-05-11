@@ -1,18 +1,18 @@
 ---
 import MarketingLayout from "../../../layouts/MarketingLayout.astro";
-import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, render, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id.replace(/\.(md|mdx)$/, "") },
     props: { post }
   }));
 }
 
 type Props = { post: CollectionEntry<"blog"> };
 const { post } = Astro.props;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const categoryColors: Record<string, string> = {
   Growth: "#1A56DB",
