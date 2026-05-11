@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0F1117"/>
+      <stop offset="100%" style="stop-color:#141929"/>
+    </linearGradient>
+    <linearGradient id="orange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F97316"/>
+      <stop offset="100%" style="stop-color:#EF4444"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Grid pattern -->
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#1E2A3A" stroke-width="1"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.4"/>
+  <!-- Logo mark -->
+  <rect x="80" y="80" width="72" height="72" rx="16" fill="url(#orange)"/>
+  <text x="116" y="132" font-family="Inter,sans-serif" font-size="42" font-weight="800" fill="white" text-anchor="middle">M</text>
+  <!-- Logo text -->
+  <text x="172" y="128" font-family="Inter,sans-serif" font-size="36" font-weight="800" fill="white">Madar</text>
+  <text x="310" y="128" font-family="Inter,sans-serif" font-size="36" font-weight="800" fill="#F97316">AI</text>
+  <!-- Main headline -->
+  <text x="80" y="280" font-family="Inter,sans-serif" font-size="68" font-weight="800" fill="white">Your App Growth</text>
+  <text x="80" y="360" font-family="Inter,sans-serif" font-size="68" font-weight="800" fill="url(#orange)">Now on Autopilot</text>
+  <!-- Sub -->
+  <text x="80" y="430" font-family="Inter,sans-serif" font-size="28" fill="#64748B">AI Growth Operating System for Mobile Apps</text>
+  <!-- Bottom bar -->
+  <rect x="0" y="570" width="1200" height="4" fill="url(#orange)" opacity="0.6"/>
+  <!-- URL -->
+  <text x="80" y="610" font-family="Inter,sans-serif" font-size="22" fill="#64748B">madarai.co</text>
+  <!-- Zyrix -->
+  <text x="1120" y="610" font-family="Inter,sans-serif" font-size="18" fill="#374151" text-anchor="end">A Zyrix Global Technologies product</text>
+</svg>

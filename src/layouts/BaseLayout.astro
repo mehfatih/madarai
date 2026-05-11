@@ -7,6 +7,7 @@ interface Props {
   description?: string;
   image?: string;
   lang?: string;
+  type?: string;
 }
 
 const {
@@ -14,11 +15,33 @@ const {
   description = "Stop guessing. Madar AI analyzes your mobile app growth, predicts problems before they happen, and takes action automatically.",
   image = "/og-default.png",
   lang: propLang,
+  type = "website",
 } = Astro.props;
 
 const lang = propLang || getLangFromUrl(Astro.url);
 const dir = languages[lang as keyof typeof languages]?.dir || "ltr";
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Madar AI",
+  "description": description,
+  "url": "https://madarai.co",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "99",
+    "priceCurrency": "USD"
+  },
+  "creator": {
+    "@type": "Organization",
+    "name": "Zyrix Global Technologies",
+    "url": "https://zyrix.com"
+  }
+};
 ---
 
 <!DOCTYPE html>
@@ -27,27 +50,54 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
-    <meta property="og:type" content="website" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Madar AI" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Madar AI" />
+    <meta property="og:locale" content={lang === "ar" ? "ar_SA" : lang === "tr" ? "tr_TR" : "en_US"} />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@madarai" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+
+    <!-- Theme -->
     <meta name="theme-color" content="#0F1117" />
-    <!-- Arabic font support -->
-    {lang === "ar" && (
-      <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-    )}
-    {lang === "tr" && (
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    )}
+
+    <!-- Hreflang for i18n -->
+    <link rel="alternate" hreflang="en" href={new URL(Astro.url.pathname.replace(/^\/(tr|ar)/, ""), Astro.site)} />
+    <link rel="alternate" hreflang="tr" href={new URL("/tr" + Astro.url.pathname.replace(/^\/(tr|ar)/, ""), Astro.site)} />
+    <link rel="alternate" hreflang="ar" href={new URL("/ar" + Astro.url.pathname.replace(/^\/(tr|ar)/, ""), Astro.site)} />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {lang === "ar"
+      ? <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+      : <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    }
   </head>
   <body class={lang === "ar" ? "font-arabic" : ""}>
     <slot />
@@ -55,13 +105,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 </html>
 
 <style is:global>
-  .font-arabic {
-    font-family: "Cairo", "Inter", system-ui, sans-serif !important;
-  }
+  .font-arabic { font-family: "Cairo", "Inter", system-ui, sans-serif !important; }
   [dir="rtl"] .nav-links { flex-direction: row-reverse; }
-  [dir="rtl"] .nav-cta   { flex-direction: row-reverse; }
+  [dir="rtl"] .nav-cta { flex-direction: row-reverse; }
   [dir="rtl"] .footer-top { direction: rtl; }
   [dir="rtl"] .footer-bottom { flex-direction: row-reverse; }
-  [dir="rtl"] .hero-stats { flex-direction: row-reverse; }
   [dir="rtl"] .mega-menu { left: auto; right: 50%; transform: translateX(50%); }
 </style>
