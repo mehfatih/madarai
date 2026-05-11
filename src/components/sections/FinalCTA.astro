@@ -1,0 +1,233 @@
+---
+---
+
+<section class="final-cta">
+  <div class="cta-bg">
+    <div class="cta-orb cta-orb-1"></div>
+    <div class="cta-orb cta-orb-2"></div>
+    <div class="cta-grid"></div>
+  </div>
+
+  <div class="cta-inner">
+    <div class="cta-badge">
+      <span class="badge-dot"></span>
+      Limited Early Access — 2,400+ on waitlist
+    </div>
+
+    <h2 class="cta-headline">
+      Stop measuring growth.<br/>
+      <span class="gradient-text">Start commanding it.</span>
+    </h2>
+
+    <p class="cta-sub">
+      Join the founders who replaced 5 tools with one AI brain.
+      No credit card. No setup fees. Cancel anytime.
+    </p>
+
+    <div class="cta-buttons">
+      <a href="/signup" class="cta-primary">
+        Start Free Today
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M3.5 9h11M10 4.5l4.5 4.5-4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="/pricing" class="cta-secondary">View Pricing</a>
+      <a href="/company/contact" class="cta-ghost">Book a Demo</a>
+    </div>
+
+    <div class="cta-trust">
+      <span class="trust-item">✓ 60-day money-back guarantee</span>
+      <span class="trust-divider">·</span>
+      <span class="trust-item">✓ No credit card required</span>
+      <span class="trust-divider">·</span>
+      <span class="trust-item">✓ Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<style>
+.final-cta {
+  position: relative;
+  padding: var(--space-32) var(--space-6);
+  text-align: center;
+  overflow: hidden;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cta-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+
+.cta-orb-1 {
+  width: 500px; height: 500px;
+  background: rgba(26,86,219,0.12);
+  top: -200px; left: -100px;
+  animation: orbFloat 10s ease-in-out infinite;
+}
+
+.cta-orb-2 {
+  width: 400px; height: 400px;
+  background: rgba(124,58,237,0.1);
+  bottom: -150px; right: -100px;
+  animation: orbFloat 8s ease-in-out infinite reverse;
+}
+
+.cta-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+  opacity: 0.2;
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-20px) scale(1.05); }
+}
+
+.cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.cta-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  background: rgba(26,86,219,0.1);
+  border: 1px solid rgba(26,86,219,0.25);
+  border-radius: var(--radius-full);
+  font-size: var(--text-sm);
+  color: var(--color-cobalt);
+  font-weight: 500;
+  margin-bottom: var(--space-6);
+}
+
+.badge-dot {
+  width: 8px; height: 8px;
+  background: var(--color-cobalt);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 0 0 8px var(--color-cobalt);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+.cta-headline {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-6);
+}
+
+.cta-sub {
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-8);
+}
+
+.cta-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+}
+
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-4) var(--space-8);
+  background: var(--color-cobalt);
+  color: white;
+  text-decoration: none;
+  font-size: var(--text-base);
+  font-weight: 700;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glow-cobalt);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.cta-primary:hover {
+  background: #1e63f5;
+  transform: translateY(-2px);
+  box-shadow: 0 0 50px rgba(26,86,219,0.6);
+}
+
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-4) var(--space-6);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: var(--text-base);
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  transition: all var(--duration-fast);
+}
+
+.cta-secondary:hover {
+  border-color: var(--color-cobalt);
+  color: var(--color-cobalt);
+}
+
+.cta-ghost {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-4) var(--space-6);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: var(--text-base);
+  font-weight: 500;
+  border-radius: var(--radius-lg);
+  transition: color var(--duration-fast);
+}
+
+.cta-ghost:hover { color: var(--text-primary); }
+
+.cta-trust {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+}
+
+.trust-divider {
+  color: var(--border-subtle);
+}
+
+@media (max-width: 480px) {
+  .cta-buttons { flex-direction: column; align-items: stretch; }
+  .cta-primary, .cta-secondary, .cta-ghost { justify-content: center; }
+  .cta-trust { flex-direction: column; gap: var(--space-2); }
+}
+</style>

@@ -1,0 +1,42 @@
+---
+import { languages, getLangFromUrl, getLocalizedPath } from "../../i18n/translations";
+const lang = getLangFromUrl(Astro.url);
+const currentPath = Astro.url.pathname.replace(/^\/(tr|ar)/, "") || "/";
+const langEntries = Object.entries(languages);
+---
+<div class="lang-sw">
+  <button class="lc-btn" id="lang-btn">
+    <span class="lc-code">{lang.toUpperCase()}</span>
+    <span class="lc-chev">▾</span>
+  </button>
+  <div class="lc-drop" id="lang-dropdown">
+    {langEntries.map(([code, info]) => (
+      <a href={getLocalizedPath(currentPath, code)} class={code === lang ? "lc-opt lc-active" : "lc-opt"}>
+        <span class="lc-flag">{info.flag}</span>
+        <span class="lc-name">{code.toUpperCase()}</span>
+        {code === lang && <span class="lc-check">✓</span>}
+      </a>
+    ))}
+  </div>
+</div>
+<style>
+.lang-sw { position: relative; }
+.lc-btn { display: flex; align-items: center; gap: 5px; padding: 6px 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; color: rgba(255,255,255,0.8); font-size: 13px; font-weight: 700; cursor: pointer; font-family: monospace; letter-spacing: 0.05em; }
+.lc-btn:hover { background: rgba(249,115,22,0.15); border-color: rgba(249,115,22,0.4); color: white; }
+.lc-code { font-family: monospace; font-size: 12px; letter-spacing: 0.05em; }
+.lc-chev { font-size: 10px; opacity: 0.5; }
+.lc-drop { display: none; position: absolute; top: calc(100% + 8px); right: 0; min-width: 100px; background: #161B26; border: 1px solid #2A3650; border-radius: 10px; box-shadow: 0 16px 40px rgba(0,0,0,0.4); padding: 6px; z-index: 400; }
+.lc-drop.open { display: block; }
+.lc-opt { display: flex; align-items: center; gap: 8px; padding: 8px 10px; border-radius: 7px; text-decoration: none; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.6); font-family: monospace; }
+.lc-opt:hover { background: rgba(249,115,22,0.1); color: white; }
+.lc-active { color: #F97316 !important; }
+.lc-flag { font-size: 15px; }
+.lc-name { letter-spacing: 0.05em; }
+.lc-check { margin-left: auto; font-size: 11px; color: #F97316; }
+</style>
+<script>
+  const btn = document.getElementById("lang-btn");
+  const drop = document.getElementById("lang-dropdown");
+  btn?.addEventListener("click", (e) => { e.stopPropagation(); drop?.classList.toggle("open"); });
+  document.addEventListener("click", () => drop?.classList.remove("open"));
+</script>

@@ -1,0 +1,68 @@
+---
+const benchmarks = [
+  { metric: "CPI",         yours: "$3.20", industry: "$4.80", percentile: 78, color: "cobalt"  },
+  { metric: "D7 Retention",yours: "24%",   industry: "18%",   percentile: 82, color: "emerald" },
+  { metric: "ROAS",        yours: "3.8x",  industry: "2.9x",  percentile: 71, color: "amber"   },
+  { metric: "Churn Rate",  yours: "3.1%",  industry: "5.4%",  percentile: 88, color: "cyan"    },
+];
+---
+<section class="benchmark-section">
+  <div class="benchmark-inner">
+    <div class="benchmark-content">
+      <div class="section-label">Benchmark Intelligence</div>
+      <h2 class="benchmark-headline">Know exactly where you stand in your market.</h2>
+      <p class="benchmark-sub">Compare your key metrics against anonymized data from 2,400+ subscription mobile apps. Stop guessing if your numbers are good.</p>
+      <a href="/product/benchmarks" class="benchmark-cta">See your benchmarks</a>
+    </div>
+    <div class="benchmark-visual">
+      {benchmarks.map((b) => (
+        <div class={"benchmark-row benchmark-" + b.color}>
+          <div class="benchmark-meta">
+            <span class="benchmark-metric">{b.metric}</span>
+            <div class="benchmark-values">
+              <span class="benchmark-yours">You: {b.yours}</span>
+              <span class="benchmark-industry">Avg: {b.industry}</span>
+            </div>
+          </div>
+          <div class="benchmark-bar-wrap">
+            <div class="benchmark-bar-bg">
+              <div class={"benchmark-bar-fill fill-" + b.color} style={"width: " + b.percentile + "%"}></div>
+            </div>
+            <span class={"benchmark-percentile pct-" + b.color}>{b.percentile}th</span>
+          </div>
+        </div>
+      ))}
+      <p class="benchmark-note">Based on anonymized data from apps in your category</p>
+    </div>
+  </div>
+</section>
+<style>
+.benchmark-section { padding: var(--space-24) var(--space-6); }
+.benchmark-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-16); align-items: center; }
+.section-label { display: inline-block; font-size: var(--text-xs); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-amber); background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); padding: var(--space-1) var(--space-3); border-radius: var(--radius-full); margin-bottom: var(--space-4); }
+.benchmark-headline { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: var(--space-4); color: var(--text-primary); }
+.benchmark-sub { font-size: var(--text-base); color: var(--text-muted); line-height: 1.7; margin-bottom: var(--space-6); }
+.benchmark-cta { display: inline-flex; align-items: center; color: var(--color-cobalt); text-decoration: none; font-weight: 600; font-size: var(--text-base); }
+.benchmark-cta:hover { text-decoration: underline; }
+.benchmark-visual { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); }
+.benchmark-row { padding: var(--space-4); background: var(--bg-elevated); border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); }
+.benchmark-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); }
+.benchmark-metric { font-size: var(--text-sm); font-weight: 700; color: var(--text-primary); font-family: var(--font-mono); }
+.benchmark-values { display: flex; gap: var(--space-3); font-size: var(--text-xs); font-family: var(--font-mono); }
+.benchmark-yours { color: var(--text-primary); font-weight: 600; }
+.benchmark-industry { color: var(--text-muted); }
+.benchmark-bar-wrap { display: flex; align-items: center; gap: var(--space-3); }
+.benchmark-bar-bg { flex: 1; height: 8px; background: var(--bg-section); border-radius: var(--radius-full); overflow: hidden; }
+.benchmark-bar-fill { height: 100%; border-radius: var(--radius-full); }
+.fill-cobalt  { background: var(--color-cobalt);  box-shadow: 0 0 8px rgba(26,86,219,0.5);  }
+.fill-emerald { background: var(--color-emerald); box-shadow: 0 0 8px rgba(16,185,129,0.5); }
+.fill-amber   { background: var(--color-amber);   box-shadow: 0 0 8px rgba(245,158,11,0.5); }
+.fill-cyan    { background: var(--color-cyan);    box-shadow: 0 0 8px rgba(34,211,238,0.5); }
+.benchmark-percentile { font-size: var(--text-xs); font-weight: 700; font-family: var(--font-mono); min-width: 36px; text-align: right; }
+.pct-cobalt  { color: var(--color-cobalt);  }
+.pct-emerald { color: var(--color-emerald); }
+.pct-amber   { color: var(--color-amber);   }
+.pct-cyan    { color: var(--color-cyan);    }
+.benchmark-note { font-size: var(--text-xs); color: var(--text-muted); text-align: center; padding-top: var(--space-2); border-top: 1px solid var(--border-subtle); }
+@media (max-width: 768px) { .benchmark-inner { grid-template-columns: 1fr; } }
+</style>

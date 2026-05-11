@@ -1,0 +1,109 @@
+---
+import MarketingLayout from "../layouts/MarketingLayout.astro";
+import PricingPreview from "../components/sections/PricingPreview.astro";
+import FinalCTA from "../components/sections/FinalCTA.astro";
+---
+<MarketingLayout
+  title="Pricing — Madar AI"
+  description="Start free. Scale as you grow. No credit card required."
+>
+  <div class="pricing-page-hero">
+    <div class="pph-inner">
+      <div class="pph-badge">Simple, Transparent Pricing</div>
+      <h1 class="pph-headline">Start free. <span class="gradient-text">Scale as you grow.</span></h1>
+      <p class="pph-sub">Join 2,400+ mobile app founders using Madar AI to grow smarter.<br/>No credit card required. Cancel anytime.</p>
+    </div>
+  </div>
+  <PricingPreview />
+  <div class="roi-section">
+    <div class="roi-inner">
+      <h2 class="roi-headline">Calculate your ROI</h2>
+      <p class="roi-sub">See how much Madar AI can save and earn for your app</p>
+      <div class="roi-calculator" id="roi-calc">
+        <div class="roi-inputs">
+          <div class="roi-field">
+            <label class="roi-label">Current Monthly Ad Spend</label>
+            <div class="roi-input-wrap"><span class="roi-prefix">$</span><input type="range" min="1000" max="100000" step="1000" value="10000" class="roi-slider" id="spend-slider" /><span class="roi-val" id="spend-val">$10,000</span></div>
+          </div>
+          <div class="roi-field">
+            <label class="roi-label">Current Monthly Churn Rate</label>
+            <div class="roi-input-wrap"><input type="range" min="1" max="20" step="0.5" value="5" class="roi-slider" id="churn-slider" /><span class="roi-val" id="churn-val">5%</span></div>
+          </div>
+          <div class="roi-field">
+            <label class="roi-label">Monthly Recurring Revenue (MRR)</label>
+            <div class="roi-input-wrap"><span class="roi-prefix">$</span><input type="range" min="1000" max="500000" step="1000" value="50000" class="roi-slider" id="mrr-slider" /><span class="roi-val" id="mrr-val">$50,000</span></div>
+          </div>
+        </div>
+        <div class="roi-results">
+          <div class="roi-result-card roi-orange">
+            <div class="roi-result-label">Estimated Ad Savings / mo</div>
+            <div class="roi-result-value" id="ad-savings">$1,500</div>
+            <div class="roi-result-note">~15% waste reduction</div>
+          </div>
+          <div class="roi-result-card roi-emerald">
+            <div class="roi-result-label">Churn Revenue Saved / mo</div>
+            <div class="roi-result-value" id="churn-savings">$1,250</div>
+            <div class="roi-result-note">~38% churn reduction</div>
+          </div>
+          <div class="roi-result-card roi-cobalt">
+            <div class="roi-result-label">Total Monthly ROI</div>
+            <div class="roi-result-value" id="total-roi">$2,750</div>
+            <div class="roi-result-note">vs $499 Growth plan</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <FinalCTA />
+</MarketingLayout>
+<style>
+.pricing-page-hero { padding: 120px 24px 60px; text-align: center; background: linear-gradient(180deg, #0F1117 0%, #141929 100%); }
+.pph-inner { max-width: 700px; margin: 0 auto; }
+.pph-badge { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #F97316; background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2); padding: 4px 16px; border-radius: 999px; margin-bottom: 20px; }
+.pph-headline { font-size: clamp(2.5rem,5vw,4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: white; margin-bottom: 16px; }
+.pph-sub { font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.7; }
+.roi-section { padding: 80px 24px; background: #F8F9FA; }
+.roi-inner { max-width: 900px; margin: 0 auto; }
+.roi-headline { font-size: 2rem; font-weight: 800; text-align: center; color: #111827; margin-bottom: 8px; }
+.roi-sub { text-align: center; color: #6B7280; margin-bottom: 48px; }
+.roi-calculator { background: white; border: 1px solid #E5E7EB; border-radius: 16px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.06); }
+.roi-inputs { display: flex; flex-direction: column; gap: 28px; margin-bottom: 36px; }
+.roi-label { font-size: 14px; font-weight: 600; color: #374151; margin-bottom: 10px; display: block; }
+.roi-input-wrap { display: flex; align-items: center; gap: 16px; }
+.roi-prefix { font-size: 16px; font-weight: 700; color: #9CA3AF; }
+.roi-slider { flex: 1; height: 6px; accent-color: #F97316; cursor: pointer; }
+.roi-val { font-size: 16px; font-weight: 800; color: #F97316; font-family: monospace; min-width: 90px; text-align: right; }
+.roi-results { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.roi-result-card { padding: 24px; border-radius: 12px; text-align: center; }
+.roi-orange  { background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.2); }
+.roi-emerald { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); }
+.roi-cobalt  { background: rgba(26,86,219,0.08);  border: 1px solid rgba(26,86,219,0.2);  }
+.roi-result-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #6B7280; margin-bottom: 8px; }
+.roi-result-value { font-size: 2rem; font-weight: 900; font-family: monospace; color: #111827; margin-bottom: 4px; }
+.roi-orange  .roi-result-value { color: #F97316; }
+.roi-emerald .roi-result-value { color: #059669; }
+.roi-cobalt  .roi-result-value { color: #1A56DB; }
+.roi-result-note { font-size: 12px; color: #9CA3AF; }
+@media (max-width: 640px) { .roi-results { grid-template-columns: 1fr; } }
+</style>
+<script>
+  function fmt(n) { return "$" + n.toLocaleString(); }
+  function update() {
+    const spend = parseInt(document.getElementById("spend-slider").value);
+    const churn = parseFloat(document.getElementById("churn-slider").value);
+    const mrr   = parseInt(document.getElementById("mrr-slider").value);
+    document.getElementById("spend-val").textContent  = fmt(spend);
+    document.getElementById("churn-val").textContent  = churn + "%";
+    document.getElementById("mrr-val").textContent    = fmt(mrr);
+    const adSave    = Math.round(spend * 0.15);
+    const churnSave = Math.round(mrr * (churn / 100) * 0.38);
+    const total     = adSave + churnSave;
+    document.getElementById("ad-savings").textContent    = fmt(adSave);
+    document.getElementById("churn-savings").textContent = fmt(churnSave);
+    document.getElementById("total-roi").textContent     = fmt(total);
+  }
+  document.getElementById("spend-slider")?.addEventListener("input", update);
+  document.getElementById("churn-slider")?.addEventListener("input", update);
+  document.getElementById("mrr-slider")?.addEventListener("input", update);
+  update();
+</script>

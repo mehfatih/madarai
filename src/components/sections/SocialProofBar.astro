@@ -1,0 +1,96 @@
+---
+const integrations = [
+  { name: "Meta Ads",    icon: "📘" },
+  { name: "TikTok Ads",  icon: "🎵" },
+  { name: "Google Ads",  icon: "🔍" },
+  { name: "Adjust",      icon: "📊" },
+  { name: "AppsFlyer",   icon: "✈️" },
+  { name: "Mixpanel",    icon: "📈" },
+  { name: "Amplitude",   icon: "⚡" },
+  { name: "RevenueCat",  icon: "💰" },
+  { name: "Adapty",      icon: "🎯" },
+  { name: "App Store",   icon: "🍎" },
+  { name: "Google Play", icon: "▶️" },
+  { name: "Slack",       icon: "💬" },
+];
+---
+
+<section class="social-proof">
+  <p class="proof-label">Connects with your entire growth stack</p>
+  <div class="ticker-wrapper">
+    <div class="ticker-track" id="ticker">
+      {[...integrations, ...integrations].map((item) => (
+        <div class="ticker-item">
+          <span class="ticker-icon">{item.icon}</span>
+          <span class="ticker-name">{item.name}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.social-proof {
+  padding: var(--space-16) 0;
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+  background: #FAFAFA;
+}
+
+.proof-label {
+  text-align: center;
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: var(--space-8);
+}
+
+.ticker-wrapper {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+}
+
+.ticker-track {
+  display: flex;
+  gap: var(--space-4);
+  width: max-content;
+  animation: ticker 35s linear infinite;
+}
+
+.ticker-track:hover { animation-play-state: paused; }
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  background: white;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  white-space: nowrap;
+  transition: all var(--duration-fast);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.ticker-item:hover {
+  border-color: var(--color-orange);
+  box-shadow: 0 4px 16px rgba(249,115,22,0.15);
+  transform: translateY(-2px);
+}
+
+.ticker-icon { font-size: 24px; }
+
+.ticker-name {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+</style>

@@ -1,0 +1,228 @@
+---
+const testimonials = [
+  { quote: "Madar AI caught a creative fatigue issue on our TikTok campaigns 3 days before our ROAS collapsed. We saved around $12,000 in wasted spend that week alone.", name: "Ahmed Al-Rashid", title: "Founder, FitTrack Pro", app: "Health and Fitness App", metric: "$12K saved", metricColor: "emerald", avatar: "A" },
+  { quote: "We went from checking 6 different tools every morning to opening one dashboard. The AI explanations are so clear I finally understand WHY things are happening, not just what.", name: "Sara Yilmaz", title: "Growth Lead, LinguaFlow", app: "Language Learning App", metric: "6 tools to 1", metricColor: "cobalt", avatar: "S" },
+  { quote: "The benchmark data alone is worth the subscription. Knowing we are in the 88th percentile for D7 retention gave us the confidence to double down on our onboarding.", name: "Omar Hassan", title: "CEO, MindfulMinutes", app: "Meditation and Wellness App", metric: "88th percentile", metricColor: "amber", avatar: "O" },
+  { quote: "The autonomous actions feature is a game changer. AI detected our CPI spike, paused the bad adsets, and shifted budget automatically. I woke up to better numbers.", name: "Layla Mansour", title: "UA Manager, Taskflow", app: "Productivity App", metric: "32% CPI drop", metricColor: "purple", avatar: "L" },
+];
+---
+<section class="testimonials-section">
+  <div class="testimonials-inner">
+    <div class="section-label">What Founders Say</div>
+    <h2 class="testimonials-headline">
+      Real results from<br/>
+      <span class="gradient-text">real mobile apps.</span>
+    </h2>
+
+    <!-- Big Semrush-style slider -->
+    <div class="slider-wrapper">
+      <div class="slider-track" id="testimonial-track">
+        {testimonials.map((t) => (
+          <div class="testimonial-slide">
+            <div class="slide-quote-mark">"</div>
+            <p class="slide-quote">{t.quote}</p>
+            <div class="slide-footer">
+              <div class="slide-author">
+                <div class="author-avatar">{t.avatar}</div>
+                <div>
+                  <div class="author-name">{t.name}</div>
+                  <div class="author-title">{t.title}</div>
+                  <div class="author-app">{t.app}</div>
+                </div>
+              </div>
+              <div class={"slide-metric metric-" + t.metricColor}>{t.metric}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Navigation -->
+      <div class="slider-nav">
+        <button class="slider-btn" id="prev-btn" aria-label="Previous">←</button>
+        <div class="slider-dots" id="slider-dots">
+          {testimonials.map((_, i) => (
+            <button class={i === 0 ? "dot dot-active" : "dot"} data-index={i}></button>
+          ))}
+        </div>
+        <button class="slider-btn" id="next-btn" aria-label="Next">→</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.testimonials-section {
+  padding: var(--space-24) var(--space-6);
+  background: #F8F4FF;
+}
+
+.testimonials-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-label {
+  display: inline-block;
+  font-size: var(--text-xs); font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: var(--color-purple);
+  background: rgba(124,58,237,0.08);
+  border: 1px solid rgba(124,58,237,0.2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-4);
+}
+
+.testimonials-headline {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800; line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: var(--space-12);
+}
+
+/* Big Slider */
+.slider-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 500ms cubic-bezier(0.16,1,0.3,1);
+}
+
+.testimonial-slide {
+  min-width: 100%;
+  padding: var(--space-12) var(--space-12);
+  background: white;
+  border-radius: var(--radius-2xl);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+  text-align: left;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.slide-quote-mark {
+  font-size: 6rem; line-height: 1;
+  color: var(--color-orange); opacity: 0.3;
+  font-family: Georgia, serif;
+  position: absolute; top: var(--space-6); left: var(--space-8);
+}
+
+.slide-quote {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: var(--text-primary);
+  line-height: 1.7; font-weight: 500;
+  padding-top: var(--space-8);
+  margin-bottom: var(--space-8);
+  max-width: 800px;
+}
+
+.slide-footer {
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.slide-author { display:flex; align-items:center; gap:var(--space-4); }
+
+.author-avatar {
+  width: 56px; height: 56px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(135deg, var(--color-orange), #EF4444);
+  display: flex; align-items: center; justify-content: center;
+  font-size: var(--text-xl); font-weight: 800; color: white;
+  flex-shrink: 0;
+}
+
+.author-name  { font-size:var(--text-base); font-weight:700; color:var(--text-primary); }
+.author-title { font-size:var(--text-sm); color:var(--text-muted); }
+.author-app   { font-size:var(--text-xs); color:var(--text-disabled); }
+
+.slide-metric {
+  font-size: var(--text-xl); font-weight: 800;
+  font-family: var(--font-mono);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-lg);
+  white-space: nowrap;
+}
+
+.metric-emerald { background:rgba(16,185,129,0.08);  color:#059669; border:1px solid rgba(16,185,129,0.2); }
+.metric-cobalt  { background:rgba(26,86,219,0.08);   color:#1A56DB; border:1px solid rgba(26,86,219,0.2); }
+.metric-amber   { background:rgba(245,158,11,0.08);  color:#D97706; border:1px solid rgba(245,158,11,0.2); }
+.metric-purple  { background:rgba(124,58,237,0.08);  color:#7C3AED; border:1px solid rgba(124,58,237,0.2); }
+
+/* Navigation */
+.slider-nav {
+  display: flex; align-items: center;
+  justify-content: center; gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.slider-btn {
+  width: 48px; height: 48px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border-subtle);
+  background: white;
+  font-size: var(--text-lg); font-weight: 700;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.slider-btn:hover {
+  border-color: var(--color-orange);
+  color: var(--color-orange);
+  box-shadow: 0 4px 12px rgba(249,115,22,0.2);
+}
+
+.slider-dots { display:flex; gap:var(--space-2); }
+
+.dot {
+  width: 10px; height: 10px;
+  border-radius: var(--radius-full);
+  border: none; background: var(--border-subtle);
+  cursor: pointer; transition: all var(--duration-fast);
+  padding: 0;
+}
+
+.dot-active {
+  background: var(--color-orange);
+  width: 28px;
+  box-shadow: 0 2px 8px rgba(249,115,22,0.4);
+}
+
+@media (max-width: 768px) {
+  .testimonial-slide { padding: var(--space-8) var(--space-6); }
+  .slide-footer { flex-direction: column; align-items: flex-start; gap: var(--space-4); }
+  .slide-quote { font-size: 1rem; }
+}
+</style>
+
+<script>
+  let current = 0;
+  const track = document.getElementById("testimonial-track");
+  const dots = document.querySelectorAll(".dot");
+  const total = dots.length;
+
+  function goTo(index) {
+    current = (index + total) % total;
+    if (track) (track as HTMLElement).style.transform = "translateX(-" + current * 100 + "%)";
+    dots.forEach((d, i) => {
+      d.classList.toggle("dot-active", i === current);
+    });
+  }
+
+  document.getElementById("next-btn")?.addEventListener("click", () => goTo(current + 1));
+  document.getElementById("prev-btn")?.addEventListener("click", () => goTo(current - 1));
+  dots.forEach((dot, i) => dot.addEventListener("click", () => goTo(i)));
+
+  // Auto-play
+  setInterval(() => goTo(current + 1), 5000);
+</script>

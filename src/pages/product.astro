@@ -1,0 +1,136 @@
+---
+import MarketingLayout from "../layouts/MarketingLayout.astro";
+import FeaturesGrid from "../components/sections/FeaturesGrid.astro";
+import BenchmarkPreview from "../components/sections/BenchmarkPreview.astro";
+import FinalCTA from "../components/sections/FinalCTA.astro";
+---
+<MarketingLayout title="GrowthCopilot — Madar AI" description="The AI Growth Operating System for subscription mobile apps.">
+
+  <!-- Hero -->
+  <div class="product-hero">
+    <div class="ph-inner">
+      <div class="ph-badge">GrowthCopilot</div>
+      <h1 class="ph-headline">The AI Growth Brain<br/><span class="gradient-text">for subscription apps.</span></h1>
+      <p class="ph-sub">12 specialized AI agents. Real-time monitoring. Autonomous actions. Predictive forecasting. All in one platform — built for mobile app founders who want to grow without guessing.</p>
+      <div class="ph-ctas">
+        <a href="/signup" class="ph-cta-primary">Start Free →</a>
+        <a href="/pricing" class="ph-cta-secondary">View Pricing</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sub-products nav -->
+  <div class="sub-products">
+    <div class="sp-inner">
+      <a href="/product" class="sp-item sp-active">
+        <span class="sp-icon">🧠</span>
+        <span class="sp-label">Overview</span>
+      </a>
+      <a href="/product/benchmarks" class="sp-item">
+        <span class="sp-icon">📊</span>
+        <span class="sp-label">Benchmarks</span>
+      </a>
+      <a href="/product/forecasting" class="sp-item">
+        <span class="sp-icon">🔮</span>
+        <span class="sp-label">Forecasting</span>
+      </a>
+      <a href="/product/autonomous" class="sp-item">
+        <span class="sp-icon">⚡</span>
+        <span class="sp-label">Autonomous</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- How it works -->
+  <div class="how-section">
+    <div class="how-inner">
+      <div class="section-label-light">How it works</div>
+      <h2 class="how-headline">From data chaos to<br/><span class="gradient-text">intelligent action</span> in 3 steps</h2>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-num">01</div>
+          <div class="step-icon">🔌</div>
+          <h3 class="step-title">Connect your stack</h3>
+          <p class="step-desc">Link Meta Ads, TikTok, Adjust, RevenueCat, Mixpanel and 20+ tools in under 10 minutes. No engineering needed.</p>
+        </div>
+        <div class="how-connector">→</div>
+        <div class="how-step">
+          <div class="step-num">02</div>
+          <div class="step-icon">🧠</div>
+          <h3 class="step-title">AI analyzes everything</h3>
+          <p class="step-desc">12 specialized agents monitor your growth 24/7 — detecting anomalies, predicting problems, and finding opportunities you would miss.</p>
+        </div>
+        <div class="how-connector">→</div>
+        <div class="how-step">
+          <div class="step-num">03</div>
+          <div class="step-icon">⚡</div>
+          <h3 class="step-title">Approve and execute</h3>
+          <p class="step-desc">AI recommends the exact action. You approve with one click. AI executes across all your connected tools automatically.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <FeaturesGrid />
+  <BenchmarkPreview />
+
+  <!-- Integrations -->
+  <div class="integrations-section">
+    <div class="int-inner">
+      <div class="section-label-light">Integrations</div>
+      <h2 class="int-headline">Works with every tool<br/>in your growth stack</h2>
+      <div class="int-grid">
+        <div class="int-card">📘 Meta Ads</div>
+        <div class="int-card">🎵 TikTok Ads</div>
+        <div class="int-card">🔍 Google Ads</div>
+        <div class="int-card">📊 Adjust</div>
+        <div class="int-card">✈️ AppsFlyer</div>
+        <div class="int-card">📈 Mixpanel</div>
+        <div class="int-card">⚡ Amplitude</div>
+        <div class="int-card">💰 RevenueCat</div>
+        <div class="int-card">🎯 Adapty</div>
+        <div class="int-card">🍎 App Store</div>
+        <div class="int-card">▶️ Google Play</div>
+        <div class="int-card">💬 Slack</div>
+      </div>
+    </div>
+  </div>
+
+  <FinalCTA />
+</MarketingLayout>
+<style>
+.product-hero { padding: 120px 24px 80px; background: linear-gradient(180deg, #0F1117 0%, #141929 100%); text-align: center; }
+.ph-inner { max-width: 760px; margin: 0 auto; }
+.ph-badge { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #F97316; background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.25); padding: 4px 16px; border-radius: 999px; margin-bottom: 20px; }
+.ph-headline { font-size: clamp(2.5rem,5vw,4rem); font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: white; margin-bottom: 20px; }
+.ph-sub { font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.7; max-width: 640px; margin: 0 auto 32px; }
+.ph-ctas { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.ph-cta-primary { padding: 14px 32px; background: linear-gradient(135deg,#F97316,#EF4444); color: white; text-decoration: none; font-weight: 700; border-radius: 999px; box-shadow: 0 4px 16px rgba(249,115,22,0.35); transition: all 0.15s; }
+.ph-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,115,22,0.45); }
+.ph-cta-secondary { padding: 14px 32px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: white; text-decoration: none; font-weight: 600; border-radius: 999px; transition: all 0.15s; }
+.ph-cta-secondary:hover { border-color: #F97316; color: #F97316; }
+.sub-products { background: #141929; border-bottom: 1px solid #2A3650; position: sticky; top: 64px; z-index: 50; }
+.sp-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; gap: 4px; overflow-x: auto; }
+.sp-item { display: flex; align-items: center; gap: 8px; padding: 16px 20px; color: rgba(255,255,255,0.5); text-decoration: none; font-size: 14px; font-weight: 600; border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap; }
+.sp-item:hover { color: white; }
+.sp-active { color: #F97316; border-bottom-color: #F97316; }
+.sp-icon { font-size: 16px; }
+.how-section { padding: 80px 24px; background: white; }
+.how-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
+.section-label-light { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #F97316; background: rgba(249,115,22,0.08); border: 1px solid rgba(249,115,22,0.2); padding: 4px 14px; border-radius: 999px; margin-bottom: 16px; }
+.how-headline { font-size: clamp(1.8rem,3.5vw,2.8rem); font-weight: 800; color: #111827; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 56px; }
+.how-steps { display: flex; align-items: center; gap: 24px; }
+.how-step { flex: 1; padding: 32px; background: #F8F9FA; border: 1px solid #E5E7EB; border-radius: 16px; text-align: left; }
+.step-num { font-size: 12px; font-weight: 800; font-family: monospace; color: #F97316; letter-spacing: 0.1em; margin-bottom: 12px; }
+.step-icon { font-size: 32px; margin-bottom: 16px; }
+.step-title { font-size: 18px; font-weight: 700; color: #111827; margin-bottom: 10px; }
+.step-desc { font-size: 14px; color: #6B7280; line-height: 1.6; }
+.how-connector { font-size: 24px; color: #E5E7EB; flex-shrink: 0; }
+.integrations-section { padding: 80px 24px; background: #F8F9FA; }
+.int-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+.int-headline { font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 800; color: #111827; line-height: 1.2; margin-bottom: 48px; }
+.int-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.int-card { padding: 20px; background: white; border: 1px solid #E5E7EB; border-radius: 12px; font-size: 15px; font-weight: 600; color: #374151; transition: all 0.15s; }
+.int-card:hover { border-color: #F97316; color: #F97316; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(249,115,22,0.1); }
+@media (max-width: 768px) { .how-steps { flex-direction: column; } .how-connector { transform: rotate(90deg); } .int-grid { grid-template-columns: repeat(2,1fr); } }
+</style>

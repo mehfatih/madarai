@@ -1,0 +1,117 @@
+---
+import MarketingLayout from "../../layouts/MarketingLayout.astro";
+import FinalCTA from "../../components/sections/FinalCTA.astro";
+const roles = [
+  { title: "Senior Frontend Engineer", dept: "Engineering", location: "Remote — EU/MENA/TR", type: "Full-time", salary: "$80K–$120K", color: "cobalt" },
+  { title: "Growth Marketing Manager", dept: "Marketing", location: "Remote — Global", type: "Full-time", salary: "$60K–$90K", color: "emerald" },
+  { title: "ML Engineer — Forecasting", dept: "AI/ML", location: "Remote — EU/TR", type: "Full-time", salary: "$90K–$140K", color: "purple" },
+  { title: "Customer Success Manager", dept: "Success", location: "Remote — MENA/TR", type: "Full-time", salary: "$50K–$75K", color: "amber" },
+  { title: "Product Designer", dept: "Design", location: "Remote — Global", type: "Full-time", salary: "$70K–$100K", color: "cyan" },
+];
+const benefits = [
+  { icon: "🌍", title: "Fully Remote", desc: "Work from anywhere. We have teammates in Istanbul, Cairo, Dubai, Berlin, and beyond." },
+  { icon: "📈", title: "Equity", desc: "Every full-time employee gets meaningful equity. We build together, we win together." },
+  { icon: "🧠", title: "Learning Budget", desc: "$2,000/year for courses, books, conferences — whatever makes you better at your craft." },
+  { icon: "⏰", title: "Async Culture", desc: "No pointless meetings. Deep work is protected. We communicate in writing by default." },
+  { icon: "🏥", title: "Health Coverage", desc: "Comprehensive health insurance for you and your family, wherever you are." },
+  { icon: "🚀", title: "Ship Real Things", desc: "Your work reaches real users fast. No bureaucracy. No endless roadmap debates." },
+];
+---
+<MarketingLayout title="Careers — Madar AI" description="Join us in building the AI Growth Operating System for mobile apps.">
+  <div class="careers-hero">
+    <div class="ch-inner">
+      <div class="ch-badge">We are hiring</div>
+      <h1 class="ch-headline">Build the future of<br/><span class="gradient-text">mobile growth intelligence.</span></h1>
+      <p class="ch-sub">We are a small, focused team building something genuinely hard and genuinely important. If you want your work to matter, you are in the right place.</p>
+      <div class="ch-stats">
+        <div class="ch-stat"><span class="ch-stat-val">12</span><span class="ch-stat-label">Team size</span></div>
+        <div class="ch-stat-div"></div>
+        <div class="ch-stat"><span class="ch-stat-val">4</span><span class="ch-stat-label">Countries</span></div>
+        <div class="ch-stat-div"></div>
+        <div class="ch-stat"><span class="ch-stat-val">100%</span><span class="ch-stat-label">Remote</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="benefits-section">
+    <div class="bs-inner">
+      <h2 class="bs-headline">Why join Madar AI</h2>
+      <div class="bs-grid">
+        {benefits.map((b) => (
+          <div class="bs-card">
+            <div class="bs-icon">{b.icon}</div>
+            <h3 class="bs-title">{b.title}</h3>
+            <p class="bs-text">{b.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="roles-section">
+    <div class="rs-inner">
+      <h2 class="rs-headline">Open Roles</h2>
+      <div class="rs-list">
+        {roles.map((role) => (
+          <div class={"rs-card rs-" + role.color}>
+            <div class="rs-info">
+              <div class={"rs-dept dept-" + role.color}>{role.dept}</div>
+              <h3 class="rs-title">{role.title}</h3>
+              <div class="rs-meta">
+                <span>📍 {role.location}</span>
+                <span>⏱ {role.type}</span>
+                <span>💰 {role.salary}</span>
+              </div>
+            </div>
+            <a href={"/company/careers/" + role.title.toLowerCase().replace(/ /g, "-")} class="rs-apply">Apply →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+  <FinalCTA />
+</MarketingLayout>
+<style>
+.careers-hero { padding: 120px 24px 80px; background: linear-gradient(180deg,#0F1117,#141929); text-align: center; }
+.ch-inner { max-width: 700px; margin: 0 auto; }
+.ch-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #10B981; background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.25); padding: 4px 16px; border-radius: 999px; margin-bottom: 20px; }
+.ch-badge::before { content: ""; width: 8px; height: 8px; background: #10B981; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.8)} }
+.ch-headline { font-size: clamp(2.5rem,5vw,4rem); font-weight: 800; color: white; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+.ch-sub { font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 40px; }
+.ch-stats { display: flex; align-items: center; justify-content: center; gap: 32px; }
+.ch-stat { text-align: center; }
+.ch-stat-val { display: block; font-size: 2rem; font-weight: 800; color: white; font-family: monospace; }
+.ch-stat-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); }
+.ch-stat-div { width: 1px; height: 40px; background: #2A3650; }
+.benefits-section { padding: 80px 24px; background: white; }
+.bs-inner { max-width: 1000px; margin: 0 auto; }
+.bs-headline { font-size: 2rem; font-weight: 800; color: #111827; text-align: center; margin-bottom: 48px; }
+.bs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.bs-card { padding: 28px; background: #F8F9FA; border: 1px solid #E5E7EB; border-radius: 14px; transition: all 0.15s; }
+.bs-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+.bs-icon { font-size: 28px; margin-bottom: 14px; }
+.bs-title { font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+.bs-text { font-size: 14px; color: #6B7280; line-height: 1.6; }
+.roles-section { padding: 80px 24px; background: #0F1117; }
+.rs-inner { max-width: 860px; margin: 0 auto; }
+.rs-headline { font-size: 2rem; font-weight: 800; color: white; margin-bottom: 32px; }
+.rs-list { display: flex; flex-direction: column; gap: 16px; }
+.rs-card { display: flex; align-items: center; justify-content: space-between; padding: 28px 32px; background: #161B26; border: 1px solid #2A3650; border-radius: 14px; transition: all 0.15s; gap: 24px; }
+.rs-card:hover { transform: translateY(-2px); }
+.rs-cobalt:hover  { border-color: rgba(26,86,219,0.5); }
+.rs-emerald:hover { border-color: rgba(16,185,129,0.5); }
+.rs-purple:hover  { border-color: rgba(124,58,237,0.5); }
+.rs-amber:hover   { border-color: rgba(245,158,11,0.5); }
+.rs-cyan:hover    { border-color: rgba(34,211,238,0.5); }
+.rs-dept { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 3px 10px; border-radius: 999px; display: inline-block; margin-bottom: 8px; }
+.dept-cobalt  { background: rgba(26,86,219,0.15);  color: #60A5FA; }
+.dept-emerald { background: rgba(16,185,129,0.15); color: #34D399; }
+.dept-purple  { background: rgba(124,58,237,0.15); color: #A78BFA; }
+.dept-amber   { background: rgba(245,158,11,0.15); color: #FCD34D; }
+.dept-cyan    { background: rgba(34,211,238,0.15); color: #67E8F9; }
+.rs-title { font-size: 18px; font-weight: 700; color: white; margin-bottom: 10px; }
+.rs-meta { display: flex; gap: 20px; flex-wrap: wrap; }
+.rs-meta span { font-size: 13px; color: rgba(255,255,255,0.4); }
+.rs-apply { padding: 10px 24px; background: linear-gradient(135deg,#F97316,#EF4444); color: white; text-decoration: none; font-size: 14px; font-weight: 700; border-radius: 999px; white-space: nowrap; transition: all 0.15s; box-shadow: 0 4px 12px rgba(249,115,22,0.3); flex-shrink: 0; }
+.rs-apply:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(249,115,22,0.4); }
+@media (max-width: 640px) { .bs-grid { grid-template-columns: 1fr; } .rs-card { flex-direction: column; align-items: flex-start; } }
+</style>

@@ -1,0 +1,133 @@
+---
+import MarketingLayout from "../../layouts/MarketingLayout.astro";
+const sections = [
+  { title: "Getting Started", icon: "🚀", color: "cobalt", pages: [
+    { title: "Introduction", desc: "What is Madar AI and how it works" },
+    { title: "Quick Setup", desc: "Connect your first app in 10 minutes" },
+    { title: "Dashboard Overview", desc: "Understanding your command center" },
+    { title: "First AI Insight", desc: "Get your first AI recommendation" },
+  ]},
+  { title: "Integrations", icon: "🔌", color: "emerald", pages: [
+    { title: "Meta Ads", desc: "Connect Facebook and Instagram campaigns" },
+    { title: "TikTok Ads", desc: "Link TikTok for Business account" },
+    { title: "Adjust / AppsFlyer", desc: "Attribution data setup" },
+    { title: "RevenueCat / Adapty", desc: "Subscription analytics connection" },
+    { title: "Mixpanel / Amplitude", desc: "Product analytics integration" },
+  ]},
+  { title: "AI Agents", icon: "🧠", color: "purple", pages: [
+    { title: "How Agents Work", desc: "Understanding multi-agent architecture" },
+    { title: "Growth Radar Agent", desc: "Real-time monitoring and alerts" },
+    { title: "Forecast Agent", desc: "90-day predictive modeling" },
+    { title: "Action Agent", desc: "Autonomous execution setup" },
+  ]},
+  { title: "API Reference", icon: "⚡", color: "amber", pages: [
+    { title: "Authentication", desc: "API keys and OAuth" },
+    { title: "Metrics API", desc: "Fetch your growth data programmatically" },
+    { title: "Webhooks", desc: "Real-time event notifications" },
+    { title: "Rate Limits", desc: "Usage limits and best practices" },
+  ]},
+];
+---
+<MarketingLayout title="Documentation — Madar AI" description="Everything you need to get started with Madar AI.">
+  <div class="docs-layout">
+    <aside class="docs-sidebar">
+      <div class="ds-search">
+        <input type="search" placeholder="Search docs..." class="ds-input" />
+      </div>
+      {sections.map((section) => (
+        <div class="ds-section">
+          <div class={"ds-section-title st-" + section.color}>{section.icon} {section.title}</div>
+          {section.pages.map((page) => (
+            <a href="#" class="ds-link">{page.title}</a>
+          ))}
+        </div>
+      ))}
+    </aside>
+    <main class="docs-main">
+      <div class="docs-hero">
+        <h1 class="dh-title">Madar AI Documentation</h1>
+        <p class="dh-sub">Everything you need to connect, configure, and grow with Madar AI.</p>
+      </div>
+      <div class="docs-cards">
+        {sections.map((section) => (
+          <div class={"doc-card dc-" + section.color}>
+            <div class="dc-icon">{section.icon}</div>
+            <h3 class="dc-title">{section.title}</h3>
+            <ul class="dc-pages">
+              {section.pages.map((page) => (
+                <li><a href="#" class="dc-link"><span class="dc-arrow">→</span>{page.title}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <div class="docs-help">
+        <h2 class="help-title">Need help?</h2>
+        <div class="help-grid">
+          <a href="mailto:support@madarai.co" class="help-card">
+            <span class="help-icon">✉️</span>
+            <div>
+              <div class="help-card-title">Email Support</div>
+              <div class="help-card-desc">support@madarai.co</div>
+            </div>
+          </a>
+          <a href="/community" class="help-card">
+            <span class="help-icon">💬</span>
+            <div>
+              <div class="help-card-title">Community Forum</div>
+              <div class="help-card-desc">Ask the community</div>
+            </div>
+          </a>
+          <a href="/company/contact" class="help-card">
+            <span class="help-icon">📞</span>
+            <div>
+              <div class="help-card-title">Book a Call</div>
+              <div class="help-card-desc">Talk to our team</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+</MarketingLayout>
+<style>
+.docs-layout { display: flex; min-height: 100vh; padding-top: 64px; background: white; }
+.docs-sidebar { width: 260px; flex-shrink: 0; padding: 32px 20px; background: #F8F9FA; border-right: 1px solid #E5E7EB; position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; }
+.ds-search { margin-bottom: 24px; }
+.ds-input { width: 100%; padding: 10px 14px; background: white; border: 1px solid #E5E7EB; border-radius: 8px; font-size: 13px; outline: none; color: #111827; }
+.ds-input:focus { border-color: #F97316; }
+.ds-section { margin-bottom: 24px; }
+.ds-section-title { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; padding: 4px 8px; border-radius: 6px; }
+.st-cobalt  { color: #1A56DB; background: rgba(26,86,219,0.06); }
+.st-emerald { color: #059669; background: rgba(16,185,129,0.06); }
+.st-purple  { color: #7C3AED; background: rgba(124,58,237,0.06); }
+.st-amber   { color: #D97706; background: rgba(245,158,11,0.06); }
+.ds-link { display: block; padding: 7px 8px; font-size: 13px; color: #6B7280; text-decoration: none; border-radius: 6px; transition: all 0.15s; }
+.ds-link:hover { color: #F97316; background: rgba(249,115,22,0.06); }
+.docs-main { flex: 1; padding: 48px 56px; max-width: 900px; }
+.docs-hero { margin-bottom: 48px; padding-bottom: 32px; border-bottom: 1px solid #E5E7EB; }
+.dh-title { font-size: 2.5rem; font-weight: 800; color: #111827; margin-bottom: 12px; }
+.dh-sub { font-size: 1.05rem; color: #6B7280; line-height: 1.6; }
+.docs-cards { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-bottom: 56px; }
+.doc-card { padding: 28px; border: 1px solid #E5E7EB; border-radius: 14px; transition: all 0.15s; }
+.doc-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+.dc-cobalt:hover  { border-color: rgba(26,86,219,0.4); }
+.dc-emerald:hover { border-color: rgba(16,185,129,0.4); }
+.dc-purple:hover  { border-color: rgba(124,58,237,0.4); }
+.dc-amber:hover   { border-color: rgba(245,158,11,0.4); }
+.dc-icon { font-size: 28px; margin-bottom: 12px; }
+.dc-title { font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 14px; }
+.dc-pages { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.dc-link { font-size: 13px; color: #6B7280; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.15s; }
+.dc-link:hover { color: #F97316; }
+.dc-arrow { font-size: 11px; }
+.docs-help { background: #F8F9FA; border: 1px solid #E5E7EB; border-radius: 16px; padding: 32px; }
+.help-title { font-size: 18px; font-weight: 700; color: #111827; margin-bottom: 20px; }
+.help-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.help-card { display: flex; align-items: center; gap: 14px; padding: 18px; background: white; border: 1px solid #E5E7EB; border-radius: 12px; text-decoration: none; transition: all 0.15s; }
+.help-card:hover { border-color: #F97316; transform: translateY(-2px); }
+.help-icon { font-size: 22px; }
+.help-card-title { font-size: 14px; font-weight: 700; color: #111827; }
+.help-card-desc { font-size: 12px; color: #9CA3AF; }
+@media (max-width: 900px) { .docs-sidebar { display: none; } .docs-main { padding: 32px 24px; } .docs-cards { grid-template-columns: 1fr; } .help-grid { grid-template-columns: 1fr; } }
+</style>

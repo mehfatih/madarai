@@ -1,0 +1,67 @@
+---
+import "../styles/global.css";
+import { getLangFromUrl, languages } from "../i18n/translations";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  lang?: string;
+}
+
+const {
+  title = "Madar AI — AI Growth Operating System for Mobile Apps",
+  description = "Stop guessing. Madar AI analyzes your mobile app growth, predicts problems before they happen, and takes action automatically.",
+  image = "/og-default.png",
+  lang: propLang,
+} = Astro.props;
+
+const lang = propLang || getLangFromUrl(Astro.url);
+const dir = languages[lang as keyof typeof languages]?.dir || "ltr";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang={lang} dir={dir}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, Astro.url)} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0F1117" />
+    <!-- Arabic font support -->
+    {lang === "ar" && (
+      <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    )}
+    {lang === "tr" && (
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    )}
+  </head>
+  <body class={lang === "ar" ? "font-arabic" : ""}>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  .font-arabic {
+    font-family: "Cairo", "Inter", system-ui, sans-serif !important;
+  }
+  [dir="rtl"] .nav-links { flex-direction: row-reverse; }
+  [dir="rtl"] .nav-cta   { flex-direction: row-reverse; }
+  [dir="rtl"] .footer-top { direction: rtl; }
+  [dir="rtl"] .footer-bottom { flex-direction: row-reverse; }
+  [dir="rtl"] .hero-stats { flex-direction: row-reverse; }
+  [dir="rtl"] .mega-menu { left: auto; right: 50%; transform: translateX(50%); }
+</style>
