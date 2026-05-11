@@ -3,26 +3,25 @@ import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
+import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
   site: "https://madarai.co",
+  output: "server",
+  adapter: cloudflare({
+    platformProxy: { enabled: true },
+  }),
   i18n: {
     defaultLocale: "en",
     locales: ["en", "tr", "ar"],
-    routing: {
-      prefixDefaultLocale: false,
-    },
+    routing: { prefixDefaultLocale: false },
   },
   integrations: [
     react(),
     sitemap({
       i18n: {
         defaultLocale: "en",
-        locales: {
-          en: "en-US",
-          tr: "tr-TR",
-          ar: "ar-SA",
-        },
+        locales: { en: "en-US", tr: "tr-TR", ar: "ar-SA" },
       },
     }),
   ],
