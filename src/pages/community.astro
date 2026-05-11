@@ -1,0 +1,152 @@
+---
+import MarketingLayout from "../layouts/MarketingLayout.astro";
+import FinalCTA from "../components/sections/FinalCTA.astro";
+const stats = [
+  { value: "2,400+", label: "App founders" },
+  { value: "14", label: "Countries" },
+  { value: "340+", label: "Weekly discussions" },
+  { value: "92%", label: "Questions answered" },
+];
+const events = [
+  { title: "Mobile Growth AMA — MENA Edition", date: "May 20, 2026", type: "AMA", time: "3:00 PM Istanbul", color: "cobalt" },
+  { title: "Cracking D7 Retention: Live Workshop", date: "May 27, 2026", type: "Workshop", time: "2:00 PM Dubai", color: "emerald" },
+  { title: "AI in UA — What Actually Works in 2026", date: "June 3, 2026", type: "Webinar", time: "4:00 PM Istanbul", color: "purple" },
+  { title: "Office Hours with the Madar AI Team", date: "Every Friday", type: "Office Hours", time: "11:00 AM Istanbul", color: "amber" },
+];
+const categories = [
+  { icon: "📊", title: "Growth Strategy", desc: "UA, retention, monetization discussions", count: 142 },
+  { icon: "🤖", title: "AI & Automation", desc: "AI tools, autonomous actions, forecasting", count: 89 },
+  { icon: "💰", title: "Monetization", desc: "Paywall, pricing, subscription optimization", count: 76 },
+  { icon: "🌍", title: "MENA & Turkey", desc: "Regional market insights and strategies", count: 94 },
+  { icon: "📱", title: "App Store", desc: "ASO, ratings, featuring strategies", count: 58 },
+  { icon: "🔧", title: "Integrations", desc: "Meta, TikTok, Adjust, RevenueCat help", count: 63 },
+];
+---
+<MarketingLayout title="Community — Madar AI" description="Join 2,400+ mobile app founders sharing growth insights.">
+  <div class="community-hero">
+    <div class="ch-inner">
+      <div class="ch-badge">Community</div>
+      <h1 class="ch-headline">Founders helping<br/><span class="gradient-text">founders grow.</span></h1>
+      <p class="ch-sub">Join the largest community of subscription mobile app founders in MENA, Turkey, and Europe. Ask questions, share wins, and learn from people who have solved the exact problem you have.</p>
+      <div class="ch-ctas">
+        <a href="/signup" class="ch-cta-primary">Join Free →</a>
+        <a href="#events" class="ch-cta-secondary">Upcoming Events</a>
+      </div>
+    </div>
+  </div>
+  <div class="community-stats">
+    <div class="cs-inner">
+      {stats.map((s) => (
+        <div class="cs-stat">
+          <div class="cs-value">{s.value}</div>
+          <div class="cs-label">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+  <div class="forum-section">
+    <div class="fs-inner">
+      <h2 class="fs-headline">Discussion Categories</h2>
+      <div class="fs-grid">
+        {categories.map((cat) => (
+          <a href="/signup" class="fs-card">
+            <div class="fs-icon">{cat.icon}</div>
+            <div class="fs-info">
+              <div class="fs-title">{cat.title}</div>
+              <div class="fs-desc">{cat.desc}</div>
+            </div>
+            <div class="fs-count">{cat.count}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="events-section" id="events">
+    <div class="es-inner">
+      <h2 class="es-headline">Upcoming Events</h2>
+      <div class="es-list">
+        {events.map((event) => (
+          <div class={"es-card ec-" + event.color}>
+            <div class={"es-type et-" + event.color}>{event.type}</div>
+            <div class="es-info">
+              <h3 class="es-title">{event.title}</h3>
+              <div class="es-meta">
+                <span>📅 {event.date}</span>
+                <span>🕐 {event.time}</span>
+              </div>
+            </div>
+            <a href="/signup" class="es-rsvp">RSVP Free →</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+  <div class="ambassador-section">
+    <div class="as-inner">
+      <div class="as-content">
+        <h2 class="as-headline">Become an Ambassador</h2>
+        <p class="as-sub">Share Madar AI with your network and get rewarded. Ambassadors get free Scale plan access, co-marketing opportunities, and early feature access.</p>
+        <ul class="as-perks">
+          <li>Free Scale plan ($1,999/mo value)</li>
+          <li>Co-marketing and content opportunities</li>
+          <li>Early access to new features</li>
+          <li>Direct line to our product team</li>
+        </ul>
+        <a href="/signup" class="as-cta">Apply to be an Ambassador →</a>
+      </div>
+    </div>
+  </div>
+  <FinalCTA />
+</MarketingLayout>
+<style>
+.community-hero { padding: 120px 24px 80px; background: linear-gradient(180deg,#0F1117,#141929); text-align: center; }
+.ch-inner { max-width: 700px; margin: 0 auto; }
+.ch-badge { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #F97316; background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.25); padding: 4px 16px; border-radius: 999px; margin-bottom: 20px; }
+.ch-headline { font-size: clamp(2.5rem,5vw,4rem); font-weight: 800; color: white; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+.ch-sub { font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 32px; max-width: 580px; margin-left: auto; margin-right: auto; }
+.ch-ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.ch-cta-primary { padding: 14px 32px; background: linear-gradient(135deg,#F97316,#EF4444); color: white; text-decoration: none; font-weight: 700; border-radius: 999px; box-shadow: 0 4px 16px rgba(249,115,22,0.35); }
+.ch-cta-secondary { padding: 14px 32px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: white; text-decoration: none; font-weight: 600; border-radius: 999px; }
+.community-stats { background: #141929; border-top: 1px solid #2A3650; border-bottom: 1px solid #2A3650; }
+.cs-inner { max-width: 900px; margin: 0 auto; padding: 40px 24px; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; text-align: center; }
+.cs-value { font-size: 2.5rem; font-weight: 800; color: #F97316; font-family: monospace; }
+.cs-label { font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+.forum-section { padding: 80px 24px; background: white; }
+.fs-inner { max-width: 900px; margin: 0 auto; }
+.fs-headline { font-size: 2rem; font-weight: 800; color: #111827; margin-bottom: 32px; }
+.fs-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+.fs-card { display: flex; align-items: center; gap: 16px; padding: 20px; background: #F8F9FA; border: 1px solid #E5E7EB; border-radius: 14px; text-decoration: none; transition: all 0.15s; }
+.fs-card:hover { border-color: #F97316; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(249,115,22,0.1); }
+.fs-icon { font-size: 28px; flex-shrink: 0; }
+.fs-title { font-size: 15px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+.fs-desc { font-size: 13px; color: #6B7280; }
+.fs-count { font-size: 13px; font-weight: 700; color: #9CA3AF; font-family: monospace; margin-left: auto; flex-shrink: 0; }
+.events-section { padding: 80px 24px; background: #0F1117; }
+.es-inner { max-width: 900px; margin: 0 auto; }
+.es-headline { font-size: 2rem; font-weight: 800; color: white; margin-bottom: 32px; }
+.es-list { display: flex; flex-direction: column; gap: 16px; }
+.es-card { display: flex; align-items: center; gap: 20px; padding: 24px 28px; background: #161B26; border: 1px solid #2A3650; border-radius: 14px; transition: all 0.15s; flex-wrap: wrap; }
+.es-card:hover { transform: translateY(-2px); }
+.ec-cobalt:hover  { border-color: rgba(26,86,219,0.5); }
+.ec-emerald:hover { border-color: rgba(16,185,129,0.5); }
+.ec-purple:hover  { border-color: rgba(124,58,237,0.5); }
+.ec-amber:hover   { border-color: rgba(245,158,11,0.5); }
+.es-type { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 12px; border-radius: 999px; white-space: nowrap; }
+.et-cobalt  { background: rgba(26,86,219,0.15);  color: #60A5FA; }
+.et-emerald { background: rgba(16,185,129,0.15); color: #34D399; }
+.et-purple  { background: rgba(124,58,237,0.15); color: #A78BFA; }
+.et-amber   { background: rgba(245,158,11,0.15); color: #FCD34D; }
+.es-info { flex: 1; }
+.es-title { font-size: 16px; font-weight: 700; color: white; margin-bottom: 8px; }
+.es-meta { display: flex; gap: 20px; font-size: 13px; color: rgba(255,255,255,0.4); flex-wrap: wrap; }
+.es-rsvp { padding: 10px 20px; background: linear-gradient(135deg,#F97316,#EF4444); color: white; text-decoration: none; font-size: 13px; font-weight: 700; border-radius: 999px; white-space: nowrap; flex-shrink: 0; }
+.ambassador-section { padding: 80px 24px; background: linear-gradient(135deg,#1a0f3a,#0f1b45); }
+.as-inner { max-width: 700px; margin: 0 auto; }
+.as-headline { font-size: 2rem; font-weight: 800; color: white; margin-bottom: 16px; }
+.as-sub { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+.as-perks { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+.as-perks li { font-size: 15px; color: rgba(255,255,255,0.8); padding-left: 24px; position: relative; }
+.as-perks li::before { content: "✓"; position: absolute; left: 0; color: #F97316; font-weight: 700; }
+.as-cta { display: inline-block; padding: 14px 28px; background: linear-gradient(135deg,#F97316,#EF4444); color: white; text-decoration: none; font-weight: 700; border-radius: 999px; font-size: 15px; }
+@media (max-width: 768px) { .cs-inner { grid-template-columns: repeat(2,1fr); } .fs-grid { grid-template-columns: 1fr; } .es-card { flex-direction: column; align-items: flex-start; } }
+</style>

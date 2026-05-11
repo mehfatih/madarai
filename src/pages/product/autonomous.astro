@@ -1,0 +1,94 @@
+---
+import MarketingLayout from "../../layouts/MarketingLayout.astro";
+import FinalCTA from "../../components/sections/FinalCTA.astro";
+const actions = [
+  { icon: "💰", title: "Budget Optimization", desc: "AI detects underperforming ad sets and reallocates budget to top performers automatically.", color: "emerald" },
+  { icon: "⏸️", title: "Ad Set Pausing", desc: "Automatically pause ad sets showing creative fatigue, high frequency, or declining ROAS.", color: "amber" },
+  { icon: "🎯", title: "Bid Adjustments", desc: "Dynamic bid changes based on CPI trends, conversion rates, and competitive pressure.", color: "cobalt" },
+  { icon: "🧪", title: "A/B Test Launches", desc: "Automatically create and launch paywall variants, creative tests, and audience experiments.", color: "purple" },
+  { icon: "📱", title: "Paywall Optimization", desc: "Test and optimize paywall copy, pricing, and design based on conversion data.", color: "cyan" },
+  { icon: "🔔", title: "Smart Alerts", desc: "Send Slack and WhatsApp alerts when metrics cross thresholds — with AI-written context.", color: "crimson" },
+];
+---
+<MarketingLayout title="Autonomous Actions — Madar AI" description="AI that executes growth actions, not just recommends them.">
+  <div class="page-hero">
+    <div class="ph-inner">
+      <div class="ph-badge">Autonomous Actions</div>
+      <h1 class="ph-headline">AI that acts.<br/><span class="gradient-text">Not just advises.</span></h1>
+      <p class="ph-sub">Every other tool gives you recommendations. Madar AI executes them. AI suggests the action, you approve with one click, AI handles everything else — across all your connected tools.</p>
+      <a href="/signup" class="ph-cta">Try Autonomous Actions →</a>
+    </div>
+  </div>
+  <div class="how-it-works">
+    <div class="hiw-inner">
+      <h2 class="hiw-headline">The 3-step execution loop</h2>
+      <div class="hiw-steps">
+        <div class="hiw-step">
+          <div class="hiw-num">01</div>
+          <h3>AI detects the opportunity</h3>
+          <p>Continuous monitoring identifies the exact action needed — with full reasoning and expected outcome.</p>
+        </div>
+        <div class="hiw-arrow">→</div>
+        <div class="hiw-step">
+          <div class="hiw-num">02</div>
+          <h3>You approve in one click</h3>
+          <p>Get notified via Slack, WhatsApp, or email. Review the AI reasoning and approve or dismiss.</p>
+        </div>
+        <div class="hiw-arrow">→</div>
+        <div class="hiw-step">
+          <div class="hiw-num">03</div>
+          <h3>AI executes across tools</h3>
+          <p>Changes are applied automatically to Meta, TikTok, Google Ads, and your other connected platforms.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions-section">
+    <div class="as-inner">
+      <h2 class="as-headline">Actions Madar AI can execute</h2>
+      <div class="as-grid">
+        {actions.map((action) => (
+          <div class={"as-card ac-" + action.color}>
+            <div class="as-icon">{action.icon}</div>
+            <h3 class="as-title">{action.title}</h3>
+            <p class="as-desc">{action.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+  <FinalCTA />
+</MarketingLayout>
+<style>
+.page-hero { padding: 120px 24px 80px; background: linear-gradient(180deg,#0F1117,#141929); text-align: center; }
+.ph-inner { max-width: 700px; margin: 0 auto; }
+.ph-badge { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #7C3AED; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.25); padding: 4px 16px; border-radius: 999px; margin-bottom: 20px; }
+.ph-headline { font-size: clamp(2.5rem,5vw,4rem); font-weight: 800; color: white; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+.ph-sub { font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 32px; }
+.ph-cta { display: inline-block; padding: 14px 32px; background: linear-gradient(135deg,#F97316,#EF4444); color: white; text-decoration: none; font-weight: 700; border-radius: 999px; }
+.how-it-works { padding: 80px 24px; background: white; }
+.hiw-inner { max-width: 1000px; margin: 0 auto; }
+.hiw-headline { font-size: 2rem; font-weight: 800; color: #111827; text-align: center; margin-bottom: 48px; }
+.hiw-steps { display: flex; align-items: center; gap: 20px; }
+.hiw-step { flex: 1; padding: 28px; background: #F8F9FA; border: 1px solid #E5E7EB; border-radius: 16px; }
+.hiw-num { font-size: 12px; font-weight: 800; font-family: monospace; color: #F97316; letter-spacing: 0.1em; margin-bottom: 12px; }
+.hiw-step h3 { font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 8px; }
+.hiw-step p { font-size: 14px; color: #6B7280; line-height: 1.6; }
+.hiw-arrow { font-size: 24px; color: #E5E7EB; flex-shrink: 0; }
+.actions-section { padding: 80px 24px; background: #0F1117; }
+.as-inner { max-width: 1000px; margin: 0 auto; }
+.as-headline { font-size: 2rem; font-weight: 800; color: white; margin-bottom: 32px; }
+.as-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.as-card { padding: 28px; background: #161B26; border: 1px solid #2A3650; border-radius: 16px; transition: all 0.15s; }
+.as-card:hover { transform: translateY(-4px); }
+.ac-emerald:hover { border-color: rgba(16,185,129,0.4); }
+.ac-amber:hover   { border-color: rgba(245,158,11,0.4); }
+.ac-cobalt:hover  { border-color: rgba(26,86,219,0.4); }
+.ac-purple:hover  { border-color: rgba(124,58,237,0.4); }
+.ac-cyan:hover    { border-color: rgba(34,211,238,0.4); }
+.ac-crimson:hover { border-color: rgba(220,38,38,0.4); }
+.as-icon { font-size: 28px; margin-bottom: 14px; }
+.as-title { font-size: 16px; font-weight: 700; color: white; margin-bottom: 8px; }
+.as-desc { font-size: 14px; color: rgba(255,255,255,0.5); line-height: 1.6; }
+@media (max-width: 768px) { .hiw-steps { flex-direction: column; } .hiw-arrow { transform: rotate(90deg); } .as-grid { grid-template-columns: 1fr; } }
+</style>

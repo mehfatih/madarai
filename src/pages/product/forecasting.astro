@@ -1,0 +1,57 @@
+---
+import MarketingLayout from "../../layouts/MarketingLayout.astro";
+import FinalCTA from "../../components/sections/FinalCTA.astro";
+---
+<MarketingLayout title="Forecast Engine — Madar AI" description="Predict your app revenue and growth 90 days ahead.">
+  <div class="page-hero">
+    <div class="ph-inner">
+      <div class="ph-badge">Forecast Engine</div>
+      <h1 class="ph-headline">See 90 days<br/><span class="gradient-text">into your future.</span></h1>
+      <p class="ph-sub">Stop reacting to problems after they happen. Madar AI predicts your MRR, churn, ROAS drops, and budget needs weeks in advance — with confidence scores on every forecast.</p>
+      <a href="/signup" class="ph-cta">Try Forecasting Free →</a>
+    </div>
+  </div>
+  <div class="forecast-examples">
+    <div class="fe-inner">
+      <h2 class="fe-headline">What Madar AI predicts</h2>
+      <div class="fe-list">
+        <div class="fe-item fe-cyan">
+          <div class="fe-quote">"If current churn rate continues, you will lose 18% of MRR in 27 days."</div>
+          <div class="fe-type">Churn Forecast</div>
+        </div>
+        <div class="fe-item fe-cobalt">
+          <div class="fe-quote">"82% probability of ROAS drop within 72 hours — creative fatigue detected on 3 ad sets."</div>
+          <div class="fe-type">ROAS Forecast</div>
+        </div>
+        <div class="fe-item fe-amber">
+          <div class="fe-quote">"At current burn rate, you will need additional budget by October 14th."</div>
+          <div class="fe-type">Budget Forecast</div>
+        </div>
+        <div class="fe-item fe-emerald">
+          <div class="fe-quote">"Projected MRR in 90 days: $67,400 — optimistic: $74,200, pessimistic: $58,900."</div>
+          <div class="fe-type">MRR Forecast</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <FinalCTA />
+</MarketingLayout>
+<style>
+.page-hero { padding: 120px 24px 80px; background: linear-gradient(180deg,#0F1117,#141929); text-align: center; }
+.ph-inner { max-width: 700px; margin: 0 auto; }
+.ph-badge { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #22D3EE; background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.25); padding: 4px 16px; border-radius: 999px; margin-bottom: 20px; }
+.ph-headline { font-size: clamp(2.5rem,5vw,4rem); font-weight: 800; color: white; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 20px; }
+.ph-sub { font-size: 1.1rem; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 32px; }
+.ph-cta { display: inline-block; padding: 14px 32px; background: linear-gradient(135deg,#F97316,#EF4444); color: white; text-decoration: none; font-weight: 700; border-radius: 999px; }
+.forecast-examples { padding: 80px 24px; background: #0F1117; }
+.fe-inner { max-width: 860px; margin: 0 auto; }
+.fe-headline { font-size: 2rem; font-weight: 800; color: white; margin-bottom: 32px; }
+.fe-list { display: flex; flex-direction: column; gap: 16px; }
+.fe-item { padding: 28px 32px; border-radius: 16px; border-left: 4px solid; }
+.fe-cyan    { background: rgba(34,211,238,0.06);  border-color: #22D3EE; }
+.fe-cobalt  { background: rgba(26,86,219,0.06);   border-color: #1A56DB; }
+.fe-amber   { background: rgba(245,158,11,0.06);  border-color: #F59E0B; }
+.fe-emerald { background: rgba(16,185,129,0.06);  border-color: #10B981; }
+.fe-quote { font-size: 1.1rem; color: white; font-style: italic; line-height: 1.6; margin-bottom: 10px; }
+.fe-type { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); }
+</style>
