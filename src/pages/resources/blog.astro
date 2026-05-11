@@ -2,12 +2,9 @@
 import MarketingLayout from "../../layouts/MarketingLayout.astro";
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
+const allPosts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
-
-const featured = posts.filter((p) => p.data.featured);
-const regular = posts.filter((p) => !p.data.featured);
 
 const categoryColors: Record<string, string> = {
   Growth: "#1A56DB",
@@ -22,9 +19,27 @@ function formatDate(d: Date) {
   return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
 }
 
-function slugify(id: string) {
-  return id.replace(/\.(md|mdx)$/, "");
-}
+const posts = allPosts.map((post) => {
+  const accent = categoryColors[post.data.category];
+  const slug = post.id.replace(/\.(md|mdx)$/, "");
+  return {
+    slug,
+    title: post.data.title,
+    description: post.data.description,
+    category: post.data.category,
+    author: post.data.author,
+    readingTime: post.data.readingTime,
+    featured: post.data.featured,
+    pubDate: formatDate(post.data.pubDate),
+    accent,
+    href: "/resources/blog/" + slug,
+    pillStyle: "background: " + accent + "15; color: " + accent,
+    topLineStyle: "background: linear-gradient(90deg, transparent, " + accent + ", transparent)"
+  };
+});
+
+const featured = posts.filter((p) => p.featured).slice(0, 2);
+const regular = posts.filter((p) => !p.featured);
 ---
 
 <MarketingLayout title="Blog — Madar AI" description="Insights on mobile growth, AI, and subscription economics.">
@@ -43,31 +58,22 @@ function slugify(id: string) {
       <div class="mb-16">
         <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-4">Featured</div>
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {featured.slice(0, 2).map((post) => (
-            
-              href={`/resources/blog/${slugify(post.id)}`}
-              class="group relative bg-[#161B26] border border-white/5 rounded-2xl p-8 hover:border-white/15 transition-all overflow-hidden"
-            >
-              <div
-                class="absolute top-0 left-0 right-0 h-px opacity-60"
-                style={`background: linear-gradient(90deg, transparent, ${categoryColors[post.data.category]}, transparent)`}
-              ></div>
+          {featured.map((p) => (
+            <a href={p.href} class="group relative bg-[#161B26] border border-white/5 rounded-2xl p-8 hover:border-white/15 transition-all overflow-hidden">
+              <div class="absolute top-0 left-0 right-0 h-px opacity-60" style={p.topLineStyle}></div>
               <div class="flex items-center gap-2 mb-4">
-                <span
-                  class="text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded"
-                  style={`background: ${categoryColors[post.data.category]}15; color: ${categoryColors[post.data.category]}`}
-                >
-                  {post.data.category}
+                <span class="text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded" style={p.pillStyle}>
+                  {p.category}
                 </span>
-                <span class="text-[11px] font-mono text-white/30">{post.data.readingTime} min read</span>
+                <span class="text-[11px] font-mono text-white/30">{p.readingTime} min read</span>
               </div>
               <h2 class="text-2xl font-semibold tracking-tight mb-3 group-hover:text-[#F97316] transition-colors">
-                {post.data.title}
+                {p.title}
               </h2>
-              <p class="text-white/60 text-sm leading-relaxed mb-6">{post.data.description}</p>
+              <p class="text-white/60 text-sm leading-relaxed mb-6">{p.description}</p>
               <div class="flex items-center justify-between text-[11px] font-mono text-white/40">
-                <span>{post.data.author}</span>
-                <span>{formatDate(post.data.pubDate)}</span>
+                <span>{p.author}</span>
+                <span>{p.pubDate}</span>
               </div>
             </a>
           ))}
@@ -79,26 +85,20 @@ function slugify(id: string) {
       <div>
         <div class="text-[10px] font-mono uppercase tracking-[0.18em] text-white/40 mb-4">All Posts</div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {regular.map((post) => (
-            
-              href={`/resources/blog/${slugify(post.id)}`}
-              class="group bg-[#161B26] border border-white/5 rounded-2xl p-6 hover:border-white/15 transition-all"
-            >
+          {regular.map((p) => (
+            <a href={p.href} class="group bg-[#161B26] border border-white/5 rounded-2xl p-6 hover:border-white/15 transition-all">
               <div class="flex items-center gap-2 mb-4">
-                <span
-                  class="text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded"
-                  style={`background: ${categoryColors[post.data.category]}15; color: ${categoryColors[post.data.category]}`}
-                >
-                  {post.data.category}
+                <span class="text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded" style={p.pillStyle}>
+                  {p.category}
                 </span>
               </div>
               <h3 class="text-lg font-semibold tracking-tight mb-2 group-hover:text-[#F97316] transition-colors">
-                {post.data.title}
+                {p.title}
               </h3>
-              <p class="text-white/60 text-sm leading-relaxed mb-6 line-clamp-3">{post.data.description}</p>
+              <p class="text-white/60 text-sm leading-relaxed mb-6 line-clamp-3">{p.description}</p>
               <div class="flex items-center justify-between text-[11px] font-mono text-white/40 pt-4 border-t border-white/5">
-                <span>{formatDate(post.data.pubDate)}</span>
-                <span>{post.data.readingTime} min</span>
+                <span>{p.pubDate}</span>
+                <span>{p.readingTime} min</span>
               </div>
             </a>
           ))}

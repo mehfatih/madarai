@@ -2,6 +2,8 @@
 import MarketingLayout from "../../../layouts/MarketingLayout.astro";
 import { getCollection, render, type CollectionEntry } from "astro:content";
 
+export const prerender = true;
+
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
   return posts.map((post) => ({
@@ -30,9 +32,21 @@ const formatted = post.data.pubDate.toLocaleDateString("en-US", {
   day: "numeric",
   year: "numeric"
 });
+
+const pageTitle = post.data.title + " — Madar AI";
+
+const initials = post.data.author
+  .split(" ")
+  .map((s) => s.charAt(0))
+  .join("")
+  .slice(0, 2)
+  .toUpperCase();
+
+const pillStyle = "background: " + accent + "15; color: " + accent;
+const avatarStyle = "background: linear-gradient(135deg, " + accent + ", #F97316)";
 ---
 
-<MarketingLayout title={`${post.data.title} — Madar AI`} description={post.data.description}>
+<MarketingLayout title={pageTitle} description={post.data.description}>
   <article class="pt-32 pb-24 px-6 max-w-3xl mx-auto">
     <div class="mb-8">
       <a href="/resources/blog" class="text-[11px] font-mono text-white/40 hover:text-white/70 transition-colors">
@@ -44,7 +58,7 @@ const formatted = post.data.pubDate.toLocaleDateString("en-US", {
       <div class="flex items-center gap-2 mb-6">
         <span
           class="text-[10px] font-mono uppercase tracking-[0.18em] px-2 py-1 rounded"
-          style={`background: ${accent}15; color: ${accent}`}
+          style={pillStyle}
         >
           {post.data.category}
         </span>
@@ -61,9 +75,9 @@ const formatted = post.data.pubDate.toLocaleDateString("en-US", {
         <div class="flex items-center gap-3">
           <div
             class="w-8 h-8 rounded-lg flex items-center justify-center font-semibold text-xs text-white"
-            style={`background: linear-gradient(135deg, ${accent}, #F97316)`}
+            style={avatarStyle}
           >
-            {post.data.author.split(" ").map((s) => s[0]).join("").slice(0, 2).toUpperCase()}
+            {initials}
           </div>
           <div class="text-sm">
             <div class="text-white/90">{post.data.author}</div>
@@ -141,7 +155,7 @@ const formatted = post.data.pubDate.toLocaleDateString("en-US", {
       padding: 0.125rem 0.375rem;
       border-radius: 0.25rem;
       font-size: 0.875em;
-      font-family: 'JetBrains Mono', monospace;
+      font-family: "JetBrains Mono", monospace;
       color: #F97316;
     }
     .prose-madar hr { border-color: rgba(255,255,255,0.05); margin: 3rem 0; }
