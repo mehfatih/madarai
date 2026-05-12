@@ -1,0 +1,578 @@
+---
+// TestimonialsPricing.astro — Testimonials + 3-tier pricing with gradient colors
+---
+
+<section class="testi-wrap">
+  <div class="testi-head">
+    <div class="testi-badge">
+      <span class="purple-dot"></span>
+      <span>WHAT FOUNDERS SAY</span>
+    </div>
+    <h2 class="testi-title">
+      Real results from<br/>
+      <span class="grad-indigo">real mobile apps.</span>
+    </h2>
+  </div>
+
+  <div class="testi-grid">
+    <article class="testi-card">
+      <div class="quote-mark">"</div>
+      <p>Madar caught a creative fatigue issue on our TikTok campaigns 3 days before our ROAS collapsed. We saved around $12,000 in wasted spend that week alone.</p>
+      <div class="testi-footer">
+        <div class="avatar indigo">AR</div>
+        <div class="testi-author">
+          <div class="name">Ahmed Al-Rashid</div>
+          <div class="role">Founder, FitTrack Pro</div>
+        </div>
+        <div class="result-badge">+$12K</div>
+      </div>
+    </article>
+
+    <article class="testi-card">
+      <div class="quote-mark">"</div>
+      <p>We cut D30 churn from 9.4% to 6.5% in 90 days. The AI insight that connected our acquisition cohorts to retention curves was something no dashboard had ever shown me.</p>
+      <div class="testi-footer">
+        <div class="avatar mint">EY</div>
+        <div class="testi-author">
+          <div class="name">Elif Yıldız</div>
+          <div class="role">CEO, Mindful Daily</div>
+        </div>
+        <div class="result-badge">-31% churn</div>
+      </div>
+    </article>
+
+    <article class="testi-card">
+      <div class="quote-mark">"</div>
+      <p>Replaced our $9K/month growth marketer with Madar. The autonomous actions feature reallocates budget across Meta and Snapchat better than any human I've worked with.</p>
+      <div class="testi-footer">
+        <div class="avatar amber">MK</div>
+        <div class="testi-author">
+          <div class="name">Mehmet Kaya</div>
+          <div class="role">Founder, LangFlow</div>
+        </div>
+        <div class="result-badge">3.2x ROAS</div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="pricing-wrap">
+  <div class="pricing-head">
+    <div class="pricing-badge">
+      <span class="mint-dot"></span>
+      <span>PRICING</span>
+    </div>
+    <h2 class="pricing-title">
+      Start free.<br/>
+      <span class="grad-indigo">Scale as you grow.</span>
+    </h2>
+    <p class="pricing-sub">No credit card required. Cancel anytime. 3x ROI in 60 days — or full refund.</p>
+  </div>
+
+  <div class="tiers-grid">
+
+    <div class="tier tier-starter">
+      <div class="tier-stripe"></div>
+      <div class="tier-orb"></div>
+      <div class="tier-content">
+        <div class="tier-header">
+          <div class="tier-icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 L3 14 h9 l-1 8 10-12 h-9 z"/></svg>
+          </div>
+          <div class="tier-name">STARTER</div>
+        </div>
+        <div class="tier-price">
+          <span class="amount">$99</span>
+          <span class="period">/month</span>
+        </div>
+        <p class="tier-desc">Perfect for indie developers and early-stage apps.</p>
+        <a href="/signup?plan=starter" class="tier-cta cta-starter">Start free trial</a>
+        <ul class="features">
+          <li><span class="check">✓</span> 1 app connected</li>
+          <li><span class="check">✓</span> Core analytics dashboard</li>
+          <li><span class="check">✓</span> Weekly AI growth report</li>
+          <li><span class="check">✓</span> Email support</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tier tier-growth featured">
+      <div class="tier-stripe"></div>
+      <div class="tier-orb"></div>
+      <div class="popular-badge">★ MOST POPULAR</div>
+      <div class="tier-content">
+        <div class="tier-header">
+          <div class="tier-icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#10F0A0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18 l5-5 l4 4 l8-9"/><path d="M14 8 h6 v6"/></svg>
+          </div>
+          <div class="tier-name">GROWTH</div>
+        </div>
+        <div class="tier-price">
+          <span class="amount big">$499</span>
+          <span class="period">/month</span>
+        </div>
+        <p class="tier-desc">For serious apps ready to scale intelligently.</p>
+        <a href="/signup?plan=growth" class="tier-cta cta-growth">Start free trial →</a>
+        <ul class="features">
+          <li><span class="check mint">✓</span> Up to 5 apps connected</li>
+          <li><span class="check mint">✓</span> Real-time AI monitoring</li>
+          <li><span class="check mint">✓</span> Autonomous action engine</li>
+          <li><span class="check mint">✓</span> Benchmark intelligence</li>
+          <li><span class="check mint">✓</span> Priority support</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tier tier-scale">
+      <div class="tier-stripe"></div>
+      <div class="tier-orb"></div>
+      <div class="enterprise-badge">ENTERPRISE</div>
+      <div class="tier-content">
+        <div class="tier-header">
+          <div class="tier-icon">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#DDD6FE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 l3 7 h7 l-5.5 4.5 L18 21 l-6-4.5 L6 21 l1.5-7.5 L2 9 h7 z"/></svg>
+          </div>
+          <div class="tier-name">SCALE</div>
+        </div>
+        <div class="tier-price">
+          <span class="amount">$1,999</span>
+          <span class="period">/month</span>
+        </div>
+        <p class="tier-desc">For scale-ups that need enterprise-grade AI growth.</p>
+        <a href="/contact?intent=demo" class="tier-cta cta-scale">Book a demo →</a>
+        <ul class="features">
+          <li><span class="check">✓</span> Unlimited apps</li>
+          <li><span class="check">✓</span> Dedicated AI growth agent</li>
+          <li><span class="check">✓</span> Custom benchmark reports</li>
+          <li><span class="check">✓</span> White-glove onboarding</li>
+          <li><span class="check">✓</span> SLA guarantee</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="trust-row">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#10F0A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="1"/><path d="M8 11 V7 a4 4 0 0 1 8 0 v4"/></svg>
+      SOC2 Compliant
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#10F0A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12 a9 9 0 1 0 9-9"/><path d="M3 4 v8 h8"/></svg>
+      60-day money-back
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#10F0A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 9 l6 6 m0 -6 l-6 6"/></svg>
+      Cancel anytime
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#10F0A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10 h20"/></svg>
+      No credit card
+    </div>
+  </div>
+</section>
+
+<style>
+  .testi-wrap {
+    background: #FAFBFF;
+    padding: 80px 24px;
+  }
+
+  .testi-head {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .testi-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(196, 181, 253, 0.15);
+    border: 1px solid rgba(196, 181, 253, 0.4);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    color: #6D28D9;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .purple-dot {
+    width: 6px;
+    height: 6px;
+    background: #8B5CF6;
+    border-radius: 50%;
+  }
+
+  .testi-title {
+    color: #0A0070;
+    font-size: clamp(28px, 4.5vw, 40px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+
+  .grad-indigo {
+    background: linear-gradient(135deg, #11008F, #2818D8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .testi-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 4px 20px rgba(17, 0, 143, 0.06);
+  }
+
+  .quote-mark {
+    color: #11008F;
+    font-size: 32px;
+    line-height: 1;
+    margin-bottom: 12px;
+    font-family: Georgia, serif;
+    font-weight: 700;
+  }
+
+  .testi-card p {
+    color: #1F2937;
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0 0 24px;
+    font-weight: 500;
+  }
+
+  .testi-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .avatar.indigo { background: linear-gradient(135deg, #11008F, #2818D8); }
+  .avatar.mint { background: linear-gradient(135deg, #059669, #10F0A0); }
+  .avatar.amber { background: linear-gradient(135deg, #D97706, #FBBF24); }
+
+  .testi-author { flex: 1; min-width: 0; }
+  .testi-author .name { color: #0A0070; font-size: 13px; font-weight: 700; }
+  .testi-author .role { color: #6B7280; font-size: 11px; }
+
+  .result-badge {
+    background: rgba(16, 240, 160, 0.12);
+    border: 1px solid rgba(16, 240, 160, 0.3);
+    padding: 4px 10px;
+    border-radius: 6px;
+    color: #059669;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    white-space: nowrap;
+  }
+
+  .pricing-wrap {
+    background: white;
+    padding: 80px 24px;
+  }
+
+  .pricing-head {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .pricing-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 240, 160, 0.12);
+    border: 1px solid rgba(16, 240, 160, 0.3);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    color: #059669;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .mint-dot {
+    width: 6px;
+    height: 6px;
+    background: #10F0A0;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10F0A0;
+  }
+
+  .pricing-title {
+    color: #0A0070;
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px;
+  }
+
+  .pricing-sub {
+    color: #6B7280;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 540px;
+    margin: 0 auto;
+  }
+
+  .tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+
+  .tier {
+    border-radius: 18px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tier-stripe {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+  }
+
+  .tier-orb {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .tier-content {
+    position: relative;
+  }
+
+  .tier-starter {
+    background: linear-gradient(180deg, #22D3EE 0%, #0891B2 100%);
+    box-shadow: 0 20px 40px -16px rgba(8, 145, 178, 0.45);
+  }
+
+  .tier-starter .tier-stripe { background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent); }
+  .tier-starter .tier-orb { background: radial-gradient(circle, rgba(255,255,255,0.18), transparent); }
+
+  .tier-growth {
+    background: linear-gradient(180deg, #11008F 0%, #2818D8 70%, #4338CA 100%);
+    box-shadow: 0 28px 60px -20px rgba(17, 0, 143, 0.6);
+    transform: translateY(-12px);
+  }
+
+  .tier-growth .tier-stripe { background: linear-gradient(90deg, transparent, #10F0A0, transparent); }
+  .tier-growth .tier-orb { background: radial-gradient(circle, rgba(16, 240, 160, 0.3), transparent); width: 220px; height: 220px; top: -60px; right: -60px; }
+
+  .tier-scale {
+    background: linear-gradient(180deg, #7C3AED 0%, #6D28D9 60%, #4C1D95 100%);
+    box-shadow: 0 20px 40px -16px rgba(76, 29, 149, 0.5);
+  }
+
+  .tier-scale .tier-stripe { background: linear-gradient(90deg, transparent, #C4B5FD, transparent); }
+  .tier-scale .tier-orb { background: radial-gradient(circle, rgba(196, 181, 253, 0.3), transparent); }
+
+  .popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #10F0A0, #5CFFC8);
+    color: #0A0070;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 6px 18px;
+    border-radius: 100px;
+    letter-spacing: 0.12em;
+    box-shadow: 0 4px 16px rgba(16, 240, 160, 0.5);
+    z-index: 2;
+  }
+
+  .enterprise-badge {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: rgba(255, 215, 0, 0.18);
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    padding: 3px 10px;
+    border-radius: 6px;
+    color: #FCD34D;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    z-index: 2;
+  }
+
+  .tier-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .tier-icon {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tier-growth .tier-icon { background: rgba(16, 240, 160, 0.2); border-color: rgba(16, 240, 160, 0.4); }
+  .tier-scale .tier-icon { background: rgba(196, 181, 253, 0.2); border-color: rgba(196, 181, 253, 0.4); }
+
+  .tier-name {
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .tier-growth .tier-name { color: #10F0A0; }
+  .tier-scale .tier-name { color: #DDD6FE; }
+
+  .tier-price {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+
+  .tier-price .amount {
+    color: white;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    line-height: 1;
+  }
+
+  .tier-price .amount.big { font-size: 52px; }
+
+  .tier-price .period {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .tier-growth .tier-price .period,
+  .tier-scale .tier-price .period { color: rgba(255, 255, 255, 0.7); }
+
+  .tier-desc {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 8px 0 24px;
+  }
+
+  .tier-cta {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 24px;
+    text-decoration: none;
+    transition: transform 0.2s;
+    box-sizing: border-box;
+  }
+
+  .tier-cta:hover { transform: translateY(-2px); }
+
+  .cta-starter { background: white; color: #0891B2; box-shadow: 0 4px 16px rgba(0,0,0,0.15); }
+  .cta-growth { background: linear-gradient(135deg, #10F0A0, #5CFFC8); color: #0A0070; padding: 14px; box-shadow: 0 8px 24px rgba(16, 240, 160, 0.4); }
+  .cta-scale { background: rgba(255,255,255,0.12); color: white; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(8px); }
+
+  .features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .features li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  .check {
+    color: white;
+    font-size: 13px;
+    line-height: 1.4;
+    flex-shrink: 0;
+  }
+
+  .check.mint { color: #10F0A0; }
+
+  .tier-scale .check { color: #DDD6FE; }
+
+  .trust-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    padding-top: 28px;
+    border-top: 1px dashed #E5E7EB;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #6B7280;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  @media (max-width: 900px) {
+    .testi-grid { grid-template-columns: 1fr; }
+    .tiers-grid { grid-template-columns: 1fr; }
+    .tier-growth { transform: none; }
+  }
+</style>

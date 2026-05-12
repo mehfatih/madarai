@@ -1,8 +1,6 @@
 ---
 import "../styles/global.css";
 import { getLangFromUrl, languages } from "../i18n/translations";
-import Header from "../components/layout/Header.astro";
-import Footer from "../components/layout/Footer.astro";
 
 interface Props {
   title?: string;
@@ -10,8 +8,6 @@ interface Props {
   image?: string;
   lang?: string;
   type?: string;
-  hideHeader?: boolean;
-  hideFooter?: boolean;
 }
 
 const {
@@ -20,8 +16,6 @@ const {
   image = "/og-default.png",
   lang: propLang,
   type = "website",
-  hideHeader = false,
-  hideFooter = false,
 } = Astro.props;
 
 const lang = propLang || getLangFromUrl(Astro.url);
@@ -57,12 +51,14 @@ const jsonLd = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Madar AI" />
 
+    <!-- Open Graph -->
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
@@ -73,23 +69,29 @@ const jsonLd = {
     <meta property="og:site_name" content="Madar AI" />
     <meta property="og:locale" content={lang === "ar" ? "ar_SA" : lang === "tr" ? "tr_TR" : "en_US"} />
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@madarai" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/favicon.svg" />
 
-    <meta name="theme-color" content="#0A0070" />
+    <!-- Theme -->
+    <meta name="theme-color" content="#0F1117" />
 
+    <!-- Hreflang for i18n -->
     <link rel="alternate" hreflang="en" href={new URL(Astro.url.pathname.replace(/^\/(tr|ar)/, ""), Astro.site)} />
     <link rel="alternate" hreflang="tr" href={new URL("/tr" + Astro.url.pathname.replace(/^\/(tr|ar)/, ""), Astro.site)} />
     <link rel="alternate" hreflang="ar" href={new URL("/ar" + Astro.url.pathname.replace(/^\/(tr|ar)/, ""), Astro.site)} />
 
+    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     {lang === "ar"
@@ -98,17 +100,15 @@ const jsonLd = {
     }
   </head>
   <body class={lang === "ar" ? "font-arabic" : ""}>
-    {!hideHeader && <Header />}
-    <main>
-      <slot />
-    </main>
-    {!hideFooter && <Footer />}
+    <slot />
   </body>
 </html>
 
 <style is:global>
   .font-arabic { font-family: "Cairo", "Inter", system-ui, sans-serif !important; }
-  [dir="rtl"] .footer-grid { direction: rtl; }
-  body { margin: 0; padding: 0; background: #11008F; }
-  main { min-height: calc(100vh - 64px); }
+  [dir="rtl"] .nav-links { flex-direction: row-reverse; }
+  [dir="rtl"] .nav-cta { flex-direction: row-reverse; }
+  [dir="rtl"] .footer-top { direction: rtl; }
+  [dir="rtl"] .footer-bottom { flex-direction: row-reverse; }
+  [dir="rtl"] .mega-menu { left: auto; right: 50%; transform: translateX(50%); }
 </style>

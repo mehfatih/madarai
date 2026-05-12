@@ -1,0 +1,581 @@
+---
+// Hero.astro — Deep indigo hero with live dashboard mockup
+---
+
+<section class="hero-wrap">
+  <div class="hero-bg-fx"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="pulse-dot"><span class="ping"></span><span class="core"></span></span>
+      <span>AI Growth OS — Live in production</span>
+    </div>
+
+    <h1 class="hero-title">
+      Your app's growth.<br/>
+      <span class="grad-mint">Now on autopilot.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Madar AI is the intelligence layer your mobile app has been missing. Not a dashboard. Not a chatbot. A complete AI Growth Brain that predicts, decides, and acts — before you even open your laptop.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="/signup" class="btn-primary-white">
+        Start free — No credit card <span class="arrow">→</span>
+      </a>
+      <a href="#demo" class="btn-glass">
+        <span class="play-icon">▶</span>
+        See it in action
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-val">2,400<span class="accent">+</span></div>
+        <div class="stat-lbl">APPS ON WAITLIST</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <div class="stat-val">$4.2<span class="accent">M</span></div>
+        <div class="stat-lbl">AD SPEND MANAGED</div>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="stat">
+        <div class="stat-val">38<span class="accent">%</span></div>
+        <div class="stat-lbl">AVG CHURN CUT</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-dashboard">
+    <div class="dash-card">
+      <div class="dash-chrome">
+        <div class="dots"><span class="d red"></span><span class="d yellow"></span><span class="d green"></span></div>
+        <span class="chrome-url">madar.ai — Growth Command Center</span>
+        <span class="live-badge"><span class="live-dot"></span>LIVE</span>
+      </div>
+
+      <div class="dash-metrics">
+        <div class="metric mint">
+          <div class="metric-top"><span class="metric-lbl">MRR</span><span class="metric-dot"></span></div>
+          <div class="metric-val">$47,820</div>
+          <div class="metric-delta up">↑ 12.4%</div>
+          <svg viewBox="0 0 100 24" preserveAspectRatio="none" class="spark">
+            <path d="M 0,18 L 12,16 L 24,17 L 36,12 L 48,14 L 60,10 L 72,8 L 84,5 L 100,3" fill="none" stroke="#10F0A0" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="metric cyan">
+          <div class="metric-top"><span class="metric-lbl">ROAS</span><span class="metric-dot"></span></div>
+          <div class="metric-val">3.24x</div>
+          <div class="metric-delta up">↑ 0.4x</div>
+          <svg viewBox="0 0 100 24" preserveAspectRatio="none" class="spark">
+            <path d="M 0,17 L 12,16 L 24,18 L 36,15 L 48,12 L 60,14 L 72,10 L 84,7 L 100,5" fill="none" stroke="#5CFFC8" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="metric coral">
+          <div class="metric-top"><span class="metric-lbl">CHURN</span><span class="metric-dot"></span></div>
+          <div class="metric-val">4.8%</div>
+          <div class="metric-delta down good">↓ 0.6%</div>
+          <svg viewBox="0 0 100 24" preserveAspectRatio="none" class="spark">
+            <path d="M 0,5 L 12,6 L 24,8 L 36,7 L 48,10 L 60,12 L 72,14 L 84,16 L 100,18" fill="none" stroke="#FF7A7A" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="metric lavender">
+          <div class="metric-top"><span class="metric-lbl">LTV</span><span class="metric-dot"></span></div>
+          <div class="metric-val">$287</div>
+          <div class="metric-delta up">↑ 18.2%</div>
+          <svg viewBox="0 0 100 24" preserveAspectRatio="none" class="spark">
+            <path d="M 0,18 L 12,17 L 24,15 L 36,13 L 48,11 L 60,9 L 72,7 L 84,5 L 100,3" fill="none" stroke="#C4B5FD" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="ai-insight">
+        <div class="insight-orb"></div>
+        <div class="insight-head">
+          <span class="ai-pulse"><span class="ping"></span><span class="core"></span></span>
+          <span class="ai-lbl">AI INSIGHT</span>
+          <span class="ai-conf">CONFIDENCE 87%</span>
+        </div>
+        <div class="insight-title">Tier 1 GCC campaigns hitting diminishing returns</div>
+        <div class="insight-body">
+          Meta Saudi spend rose 34% — D7 ROAS softened from 2.8x to 2.1x. Reallocating 30% to UAE Snapchat (currently 4.1x) projects <strong class="hl-mint">+$8,400 monthly</strong>.
+        </div>
+        <div class="insight-actions">
+          <button class="btn-mint">Apply reallocation</button>
+          <button class="btn-ghost">Investigate</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-wrap {
+    position: relative;
+    background: linear-gradient(180deg, #0A0070 0%, #11008F 35%, #1A0FB5 75%, #2818D8 100%);
+    overflow: hidden;
+    padding: 0 0 64px;
+  }
+
+  .hero-bg-fx {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(16, 240, 160, 0.10) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(167, 139, 250, 0.10) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    text-align: center;
+    padding: 64px 24px 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 240, 160, 0.12);
+    border: 1px solid rgba(16, 240, 160, 0.3);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    color: #10F0A0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .pulse-dot {
+    position: relative;
+    display: inline-flex;
+    width: 6px;
+    height: 6px;
+  }
+
+  .pulse-dot .ping {
+    position: absolute;
+    inset: 0;
+    background: #10F0A0;
+    border-radius: 50%;
+    animation: pingAnim 2s infinite;
+  }
+
+  .pulse-dot .core {
+    position: relative;
+    background: #10F0A0;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    box-shadow: 0 0 12px #10F0A0;
+  }
+
+  @keyframes pingAnim {
+    0% { transform: scale(1); opacity: 1; }
+    75%, 100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  .hero-title {
+    color: white;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    margin: 0 0 24px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .grad-mint {
+    background: linear-gradient(135deg, #10F0A0 0%, #5CFFC8 50%, #10F0A0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 32px rgba(16, 240, 160, 0.5));
+  }
+
+  .hero-sub {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary-white {
+    background: white;
+    color: #11008F;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+
+  .btn-primary-white:hover { transform: translateY(-2px); }
+  .btn-primary-white .arrow { font-size: 18px; }
+
+  .btn-glass {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-glass:hover { background: rgba(255, 255, 255, 0.14); }
+
+  .play-icon {
+    display: inline-flex;
+    width: 22px;
+    height: 22px;
+    background: rgba(16, 240, 160, 0.3);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 0 16px;
+    flex-wrap: wrap;
+  }
+
+  .stat-val {
+    color: white;
+    font-size: 28px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    letter-spacing: -0.02em;
+  }
+
+  .stat-val .accent { color: #10F0A0; }
+
+  .stat-lbl {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 11px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    letter-spacing: 0.15em;
+    margin-top: 4px;
+  }
+
+  .stat-sep {
+    width: 1px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .hero-dashboard {
+    position: relative;
+    padding: 0 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .dash-card {
+    background: rgba(8, 0, 70, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 32px 64px -16px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(16, 240, 160, 0.12);
+  }
+
+  .dash-chrome {
+    background: rgba(8, 0, 70, 0.85);
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .dots { display: flex; gap: 6px; }
+  .dots .d { width: 11px; height: 11px; border-radius: 50%; }
+  .dots .red { background: #FF5F57; }
+  .dots .yellow { background: #FFBD2E; }
+  .dots .green { background: #27C93F; }
+
+  .chrome-url {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .live-badge {
+    margin-left: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(16, 240, 160, 0.15);
+    padding: 3px 10px;
+    border-radius: 4px;
+    color: #10F0A0;
+    font-size: 10px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #10F0A0;
+    box-shadow: 0 0 8px #10F0A0;
+  }
+
+  .dash-metrics {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  .metric {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 10px;
+    padding: 14px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+  }
+
+  .metric.mint::before { background: linear-gradient(90deg, transparent, #10F0A0, transparent); }
+  .metric.cyan::before { background: linear-gradient(90deg, transparent, #5CFFC8, transparent); }
+  .metric.coral::before { background: linear-gradient(90deg, transparent, #FF7A7A, transparent); }
+  .metric.lavender::before { background: linear-gradient(90deg, transparent, #C4B5FD, transparent); }
+
+  .metric-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .metric-lbl {
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .metric-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+  }
+
+  .metric.mint .metric-dot { background: #10F0A0; box-shadow: 0 0 8px #10F0A0; }
+  .metric.cyan .metric-dot { background: #5CFFC8; box-shadow: 0 0 8px #5CFFC8; }
+  .metric.coral .metric-dot { background: #FF7A7A; box-shadow: 0 0 8px #FF7A7A; }
+  .metric.lavender .metric-dot { background: #C4B5FD; box-shadow: 0 0 8px #C4B5FD; }
+
+  .metric-val {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    letter-spacing: -0.02em;
+  }
+
+  .metric-delta {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    margin-top: 4px;
+  }
+
+  .metric-delta.up { color: #10F0A0; }
+  .metric.cyan .metric-delta.up { color: #5CFFC8; }
+  .metric.coral .metric-delta.down { color: #FF7A7A; }
+  .metric.coral .metric-delta.down.good { color: #10F0A0; }
+  .metric.lavender .metric-delta.up { color: #C4B5FD; }
+
+  .spark {
+    width: 100%;
+    height: 22px;
+    margin-top: 8px;
+  }
+
+  .ai-insight {
+    margin: 0 20px 20px;
+    background: linear-gradient(135deg, rgba(196, 181, 253, 0.15) 0%, rgba(16, 240, 160, 0.10) 100%);
+    border: 1px solid rgba(196, 181, 253, 0.3);
+    border-radius: 12px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .insight-orb {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(196, 181, 253, 0.3), transparent);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .insight-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .ai-pulse {
+    position: relative;
+    display: inline-flex;
+    width: 8px;
+    height: 8px;
+  }
+
+  .ai-pulse .ping {
+    position: absolute;
+    inset: 0;
+    background: #C4B5FD;
+    border-radius: 50%;
+    animation: pingAnim 2s infinite;
+  }
+
+  .ai-pulse .core {
+    position: relative;
+    background: #C4B5FD;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
+    box-shadow: 0 0 10px #C4B5FD;
+  }
+
+  .ai-lbl {
+    color: #DDD6FE;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .ai-conf {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 10px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    margin-left: auto;
+  }
+
+  .insight-title {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 6px;
+    position: relative;
+  }
+
+  .insight-body {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    line-height: 1.55;
+    position: relative;
+  }
+
+  .hl-mint { color: #10F0A0; font-weight: 600; }
+
+  .insight-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    position: relative;
+  }
+
+  .btn-mint {
+    background: #10F0A0;
+    color: #0A0070;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-ghost {
+    background: rgba(255, 255, 255, 0.10);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 7px 14px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    .dash-metrics { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats { gap: 24px; }
+    .stat-sep { display: none; }
+  }
+
+  @media (max-width: 480px) {
+    .dash-metrics { grid-template-columns: 1fr; }
+  }
+</style>

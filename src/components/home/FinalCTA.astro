@@ -1,0 +1,220 @@
+---
+// FinalCTA.astro — Deep indigo cinematic final CTA
+---
+
+<section class="final-wrap">
+  <div class="final-bg-fx"></div>
+  <div class="final-grid"></div>
+
+  <div class="final-inner">
+    <div class="final-badge">
+      <span class="pulse"><span class="ping"></span><span class="core"></span></span>
+      <span>Limited Early Access — 2,400+ on waitlist</span>
+    </div>
+
+    <h2 class="final-title">
+      Stop measuring growth.<br/>
+      <span class="grad-mint">Start commanding it.</span>
+    </h2>
+
+    <p class="final-sub">
+      Join the founders who replaced 5 tools with one AI brain. No credit card. No setup fees. Cancel anytime.
+    </p>
+
+    <div class="final-ctas">
+      <a href="/signup" class="cta-primary">Start free today <span class="arr">→</span></a>
+      <a href="/pricing" class="cta-secondary">View pricing</a>
+      <a href="/contact?intent=demo" class="cta-text">Book a demo</a>
+    </div>
+
+    <div class="trust-line">
+      <span><span class="mint-check">✓</span> 60-day money-back guarantee</span>
+      <span><span class="mint-check">✓</span> No credit card required</span>
+      <span><span class="mint-check">✓</span> Cancel anytime</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-wrap {
+    background: linear-gradient(180deg, #0A0070 0%, #11008F 60%, #1A0FB5 100%);
+    padding: 100px 24px 80px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .final-bg-fx {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(16, 240, 160, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 20% 80%, rgba(196, 181, 253, 0.10) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(34, 211, 238, 0.10) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .final-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-inner {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .final-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 240, 160, 0.12);
+    border: 1px solid rgba(16, 240, 160, 0.3);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    color: #10F0A0;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .pulse {
+    position: relative;
+    display: inline-flex;
+    width: 6px;
+    height: 6px;
+  }
+
+  .pulse .ping {
+    position: absolute;
+    inset: 0;
+    background: #10F0A0;
+    border-radius: 50%;
+    animation: pingPulse 2s infinite;
+  }
+
+  .pulse .core {
+    position: relative;
+    background: #10F0A0;
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    box-shadow: 0 0 12px #10F0A0;
+  }
+
+  @keyframes pingPulse {
+    0% { transform: scale(1); opacity: 1; }
+    75%, 100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  .final-title {
+    color: white;
+    font-size: clamp(32px, 5.5vw, 56px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    margin: 0 0 20px;
+  }
+
+  .grad-mint {
+    background: linear-gradient(135deg, #10F0A0 0%, #5CFFC8 50%, #10F0A0 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 32px rgba(16, 240, 160, 0.45));
+  }
+
+  .final-sub {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 17px;
+    line-height: 1.6;
+    max-width: 580px;
+    margin: 0 auto 36px;
+    font-weight: 400;
+  }
+
+  .final-ctas {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .cta-primary {
+    background: linear-gradient(135deg, #10F0A0, #5CFFC8);
+    color: #0A0070;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px 32px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 32px rgba(16, 240, 160, 0.4);
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+
+  .cta-primary:hover { transform: translateY(-2px); }
+  .cta-primary .arr { font-size: 18px; }
+
+  .cta-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 16px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    text-decoration: none;
+  }
+
+  .cta-text {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 16px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .trust-line {
+    display: inline-flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .trust-line > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .mint-check { color: #10F0A0; }
+</style>

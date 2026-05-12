@@ -1,25 +1,23 @@
 ---
-import MarketingLayout from '../layouts/MarketingLayout.astro';
-import HeroSection from '../components/sections/HeroSection.astro';
-import SocialProofBar from '../components/sections/SocialProofBar.astro';
-import ProblemSection from '../components/sections/ProblemSection.astro';
-import FeaturesGrid from '../components/sections/FeaturesGrid.astro';
-import BenchmarkPreview from '../components/sections/BenchmarkPreview.astro';
-import TestimonialsSection from '../components/sections/TestimonialsSection.astro';
-import PricingPreview from '../components/sections/PricingPreview.astro';
-import FinalCTA from '../components/sections/FinalCTA.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/home/Hero.astro';
+import IntegrationsProblem from '../components/home/IntegrationsProblem.astro';
+import SixSystems from '../components/home/SixSystems.astro';
+import Benchmarks from '../components/home/Benchmarks.astro';
+import GlobeSection from '../components/home/GlobeSection.astro';
+import TestimonialsPricing from '../components/home/TestimonialsPricing.astro';
+import FinalCTA from '../components/home/FinalCTA.astro';
 ---
 
-<MarketingLayout
-  title="Madar AI — AI Growth Operating System for Mobile Apps"
-  description="Stop guessing. Madar AI analyzes your mobile app growth, predicts problems before they happen, and takes action automatically."
+<BaseLayout
+  title="Madar AI — The AI Growth Operating System for Mobile Apps"
+  description="Madar AI is the intelligence layer your mobile app has been missing. A complete AI Growth Brain that predicts, decides, and acts — for subscription mobile apps."
 >
-  <HeroSection />
-  <SocialProofBar />
-  <ProblemSection />
-  <FeaturesGrid />
-  <BenchmarkPreview />
-  <TestimonialsSection />
-  <PricingPreview />
+  <Hero />
+  <IntegrationsProblem />
+  <SixSystems />
+  <Benchmarks />
+  <GlobeSection />
+  <TestimonialsPricing />
   <FinalCTA />
-</MarketingLayout>
+</BaseLayout>

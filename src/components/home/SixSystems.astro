@@ -1,0 +1,273 @@
+---
+// SixSystems.astro — Dark indigo section with 6 capability cards
+---
+
+<section class="six-wrap">
+  <div class="six-bg-fx"></div>
+
+  <div class="six-head">
+    <div class="six-badge">
+      <span class="mint-dot"></span>
+      <span>CORE CAPABILITIES</span>
+    </div>
+    <h2 class="six-title">
+      Six AI systems.<br/>
+      <span class="grad-mint">One command center.</span>
+    </h2>
+    <p class="six-sub">
+      Every feature is connected. Every insight is actionable. Every action is explainable.
+    </p>
+  </div>
+
+  <div class="six-grid">
+    <article class="ai-card lavender">
+      <div class="card-tag"><span>AI · BRAIN</span></div>
+      <h3>AI Growth Brain</h3>
+      <p>A multi-agent system with 12 specialized AI agents. Your virtual Head of Growth, available 24/7.</p>
+      <div class="tag-row">
+        <span class="chip">Multi-agent</span>
+        <span class="chip">Always-on</span>
+        <span class="chip">Autonomous</span>
+      </div>
+    </article>
+
+    <article class="ai-card mint">
+      <div class="card-tag"><span>REV · SHIELD</span></div>
+      <h3>Revenue Shield</h3>
+      <p>Real-time monitoring of MRR, LTV, ROAS, and subscription health. Detects revenue threats instantly.</p>
+      <div class="tag-row">
+        <span class="chip">MRR tracking</span>
+        <span class="chip">ROAS monitor</span>
+        <span class="chip">LTV curves</span>
+      </div>
+    </article>
+
+    <article class="ai-card cyan">
+      <div class="card-tag"><span>FOR · ENGINE</span></div>
+      <h3>Forecast Engine</h3>
+      <p>Predicts your app's financial status 12 to 90 days ahead. Know when ROAS will drop before it does.</p>
+      <div class="tag-row">
+        <span class="chip">90-day forecast</span>
+        <span class="chip">Scenarios</span>
+        <span class="chip">Confidence bands</span>
+      </div>
+    </article>
+
+    <article class="ai-card pink">
+      <div class="card-tag"><span>ACT · AUTONOMOUS</span></div>
+      <h3>Autonomous Actions</h3>
+      <p>AI suggests. You approve. AI executes. Budget changes, adset pauses, A/B tests — one click.</p>
+      <div class="tag-row">
+        <span class="chip">One-click execute</span>
+        <span class="chip">Audit trail</span>
+        <span class="chip">Reversible</span>
+      </div>
+    </article>
+
+    <article class="ai-card amber">
+      <div class="card-tag"><span>BEN · INTEL</span></div>
+      <h3>Benchmark Intelligence</h3>
+      <p>Compare your CPI, D7 retention, ROAS against 2,400+ apps in your category. Know where you stand.</p>
+      <div class="tag-row">
+        <span class="chip">Industry benchmarks</span>
+        <span class="chip">Percentile</span>
+      </div>
+    </article>
+
+    <article class="ai-card coral">
+      <div class="card-tag"><span>ALT · WARNING</span></div>
+      <h3>Early Warning System</h3>
+      <p>Detects creative fatigue, audience saturation, and churn spikes 72 hours before standard dashboards.</p>
+      <div class="tag-row">
+        <span class="chip">72h early</span>
+        <span class="chip">Slack alerts</span>
+        <span class="chip">Root cause AI</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .six-wrap {
+    background: linear-gradient(180deg, #0A0070 0%, #11008F 60%, #1A0FB5 100%);
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .six-bg-fx {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 50% 0%, rgba(16, 240, 160, 0.10) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .six-head {
+    position: relative;
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .six-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(16, 240, 160, 0.12);
+    border: 1px solid rgba(16, 240, 160, 0.3);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    color: #10F0A0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .mint-dot {
+    width: 6px;
+    height: 6px;
+    background: #10F0A0;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10F0A0;
+  }
+
+  .six-title {
+    color: white;
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px;
+  }
+
+  .grad-mint {
+    background: linear-gradient(135deg, #10F0A0, #5CFFC8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 24px rgba(16, 240, 160, 0.4));
+  }
+
+  .six-sub {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .six-grid {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .ai-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+  }
+
+  .ai-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.18);
+  }
+
+  .ai-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+  }
+
+  .ai-card.lavender::before { background: linear-gradient(90deg, transparent, #C4B5FD, transparent); }
+  .ai-card.mint::before { background: linear-gradient(90deg, transparent, #10F0A0, transparent); }
+  .ai-card.cyan::before { background: linear-gradient(90deg, transparent, #22D3EE, transparent); }
+  .ai-card.pink::before { background: linear-gradient(90deg, transparent, #F472B6, transparent); }
+  .ai-card.amber::before { background: linear-gradient(90deg, transparent, #FBBF24, transparent); }
+  .ai-card.coral::before { background: linear-gradient(90deg, transparent, #FF7A7A, transparent); }
+
+  .card-tag {
+    display: inline-flex;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+  }
+
+  .card-tag span {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .ai-card.lavender .card-tag { background: rgba(196, 181, 253, 0.18); border: 1px solid rgba(196, 181, 253, 0.3); }
+  .ai-card.lavender .card-tag span { color: #C4B5FD; }
+
+  .ai-card.mint .card-tag { background: rgba(16, 240, 160, 0.18); border: 1px solid rgba(16, 240, 160, 0.3); }
+  .ai-card.mint .card-tag span { color: #10F0A0; }
+
+  .ai-card.cyan .card-tag { background: rgba(34, 211, 238, 0.18); border: 1px solid rgba(34, 211, 238, 0.3); }
+  .ai-card.cyan .card-tag span { color: #22D3EE; }
+
+  .ai-card.pink .card-tag { background: rgba(244, 114, 182, 0.18); border: 1px solid rgba(244, 114, 182, 0.3); }
+  .ai-card.pink .card-tag span { color: #F472B6; }
+
+  .ai-card.amber .card-tag { background: rgba(251, 191, 36, 0.18); border: 1px solid rgba(251, 191, 36, 0.3); }
+  .ai-card.amber .card-tag span { color: #FBBF24; }
+
+  .ai-card.coral .card-tag { background: rgba(255, 122, 122, 0.18); border: 1px solid rgba(255, 122, 122, 0.3); }
+  .ai-card.coral .card-tag span { color: #FF7A7A; }
+
+  .ai-card h3 {
+    color: white;
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .ai-card p {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 16px;
+  }
+
+  .tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .chip {
+    font-size: 10px;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .ai-card.lavender .chip { background: rgba(196, 181, 253, 0.12); border: 1px solid rgba(196, 181, 253, 0.25); color: #DDD6FE; }
+  .ai-card.mint .chip { background: rgba(16, 240, 160, 0.12); border: 1px solid rgba(16, 240, 160, 0.25); color: #6EE7B7; }
+  .ai-card.cyan .chip { background: rgba(34, 211, 238, 0.12); border: 1px solid rgba(34, 211, 238, 0.25); color: #67E8F9; }
+  .ai-card.pink .chip { background: rgba(244, 114, 182, 0.12); border: 1px solid rgba(244, 114, 182, 0.25); color: #F9A8D4; }
+  .ai-card.amber .chip { background: rgba(251, 191, 36, 0.12); border: 1px solid rgba(251, 191, 36, 0.25); color: #FCD34D; }
+  .ai-card.coral .chip { background: rgba(255, 122, 122, 0.12); border: 1px solid rgba(255, 122, 122, 0.25); color: #FCA5A5; }
+
+  @media (max-width: 900px) {
+    .six-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .six-grid { grid-template-columns: 1fr; }
+  }
+</style>

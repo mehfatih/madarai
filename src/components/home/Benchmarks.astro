@@ -1,0 +1,232 @@
+---
+// Benchmarks.astro — White section with percentile progress bars
+---
+
+<section class="bench-wrap">
+  <div class="bench-grid">
+    <div class="bench-text">
+      <div class="bench-badge">
+        <span class="amber-dot"></span>
+        <span>BENCHMARK INTELLIGENCE</span>
+      </div>
+      <h2>Know exactly where you stand in your market.</h2>
+      <p>
+        Compare your key metrics against anonymized data from 2,400+ subscription mobile apps. Stop guessing if your numbers are good — see exactly which percentile you're in.
+      </p>
+      <a href="/product/benchmarks" class="bench-link">
+        See your benchmarks <span>→</span>
+      </a>
+    </div>
+
+    <div class="bench-panel">
+      <div class="bar-row">
+        <div class="bar-head">
+          <span class="bar-name">CPI</span>
+          <span class="bar-vs"><span class="lbl">You: </span><strong>$3.20</strong><span class="avg">Avg: $4.80</span></span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill indigo" style="width: 78%;"></div>
+        </div>
+        <div class="bar-percentile indigo">78th percentile</div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-head">
+          <span class="bar-name">D7 Retention</span>
+          <span class="bar-vs"><span class="lbl">You: </span><strong>24%</strong><span class="avg">Avg: 18%</span></span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill green" style="width: 82%;"></div>
+        </div>
+        <div class="bar-percentile green">82nd percentile</div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-head">
+          <span class="bar-name">ROAS</span>
+          <span class="bar-vs"><span class="lbl">You: </span><strong>3.8x</strong><span class="avg">Avg: 2.9x</span></span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill amber" style="width: 71%;"></div>
+        </div>
+        <div class="bar-percentile amber">71st percentile</div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-head">
+          <span class="bar-name">Churn Rate</span>
+          <span class="bar-vs"><span class="lbl">You: </span><strong>3.1%</strong><span class="avg">Avg: 5.4%</span></span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill cyan" style="width: 88%;"></div>
+        </div>
+        <div class="bar-percentile cyan">88th percentile</div>
+      </div>
+
+      <div class="bench-foot">
+        <span>Based on anonymized data · Health & Fitness category</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .bench-wrap {
+    background: white;
+    padding: 80px 24px;
+  }
+
+  .bench-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .bench-text h2 {
+    color: #0A0070;
+    font-size: clamp(26px, 4vw, 40px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 0 20px;
+  }
+
+  .bench-text p {
+    color: #4B5563;
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0 0 28px;
+  }
+
+  .bench-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(251, 191, 36, 0.12);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    color: #B45309;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .amber-dot {
+    width: 6px;
+    height: 6px;
+    background: #F59E0B;
+    border-radius: 50%;
+  }
+
+  .bench-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #11008F;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .bench-link span { font-size: 18px; }
+
+  .bench-link:hover { gap: 12px; transition: gap 0.2s; }
+
+  .bench-panel {
+    background: #FAFBFF;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 32px rgba(17, 0, 143, 0.06);
+  }
+
+  .bar-row {
+    margin-bottom: 18px;
+  }
+
+  .bar-row:last-of-type { margin-bottom: 0; }
+
+  .bar-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+
+  .bar-name {
+    color: #0A0070;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .bar-vs {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 12px;
+  }
+
+  .bar-vs .lbl { color: #4B5563; }
+  .bar-vs strong { color: #0A0070; font-weight: 600; }
+  .bar-vs .avg { color: #9CA3AF; margin-left: 12px; }
+
+  .bar-track {
+    position: relative;
+    height: 8px;
+    background: #E5E7EB;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    position: absolute;
+    left: 0; top: 0;
+    height: 100%;
+    border-radius: 100px;
+    transform-origin: left;
+    animation: fillBar 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .bar-fill.indigo { background: linear-gradient(90deg, #11008F, #2818D8); }
+  .bar-fill.green { background: linear-gradient(90deg, #059669, #10F0A0); }
+  .bar-fill.amber { background: linear-gradient(90deg, #D97706, #FBBF24); }
+  .bar-fill.cyan { background: linear-gradient(90deg, #0891B2, #22D3EE); }
+
+  @keyframes fillBar {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  .bar-percentile {
+    text-align: right;
+    margin-top: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .bar-percentile.indigo { color: #11008F; }
+  .bar-percentile.green { color: #059669; }
+  .bar-percentile.amber { color: #D97706; }
+  .bar-percentile.cyan { color: #0891B2; }
+
+  .bench-foot {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px dashed #E5E7EB;
+    text-align: center;
+  }
+
+  .bench-foot span {
+    color: #9CA3AF;
+    font-size: 11px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  @media (max-width: 900px) {
+    .bench-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+</style>

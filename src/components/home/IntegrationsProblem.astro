@@ -1,0 +1,394 @@
+---
+// IntegrationsProblem.astro — White section with brand logos + 3 problem cards
+---
+
+<section class="integ-wrap">
+  <div class="integ-head">
+    <span class="integ-label">Connects with your entire growth stack</span>
+  </div>
+
+  <div class="logos-grid">
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="Adjust">
+        <path fill="#1B41C0" d="M12 0L0 12l12 12 12-12L12 0zm0 4.5L19.5 12 12 19.5 4.5 12 12 4.5z"/>
+        <circle cx="12" cy="12" r="3" fill="#1B41C0"/>
+      </svg>
+      <span>Adjust</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="AppsFlyer">
+        <path fill="#00C7BE" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm5 8.5l-7 7-3-3 1.4-1.4 1.6 1.6 5.6-5.6L17 8.5z"/>
+      </svg>
+      <span>AppsFlyer</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="Mixpanel">
+        <circle cx="4" cy="12" r="2.5" fill="#7856FF"/>
+        <circle cx="12" cy="12" r="3.5" fill="#7856FF"/>
+        <circle cx="20" cy="12" r="2" fill="#7856FF"/>
+      </svg>
+      <span>Mixpanel</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="Amplitude">
+        <path fill="#1E61F0" d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm-1 17l-2-5-2 5H4l4-10h2l4 10h-3zm6 0V7h2v10h-2z"/>
+      </svg>
+      <span>Amplitude</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="RevenueCat">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#F22F46"/>
+        <path d="M8 10 Q10 6 12 10 Q14 14 12 16 Q10 18 8 16 Q6 14 8 10 Z" fill="white"/>
+        <circle cx="11" cy="11" r="1.2" fill="#F22F46"/>
+        <path d="M14 13 L18 11" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+      <span>RevenueCat</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="Meta">
+        <path fill="#0866FF" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm5.5 12c0 2-1.5 3.5-3.5 3.5-1 0-2-.5-2.5-1.5-.5 1-1.5 1.5-2.5 1.5-2 0-3.5-1.5-3.5-3.5 0-1.5 1-3 2-4.5C8.5 8 9.5 7 10.5 7c1 0 2 .5 2 .5s1-.5 2-.5c1 0 2 1 3 2.5 1 1.5 2 3 2 4.5z"/>
+      </svg>
+      <span>Meta Ads</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="Google Ads">
+        <path fill="#FBBC04" d="M12 1.5L2 19h6l4-7 4 7h6L12 1.5z"/>
+        <path fill="#4285F4" d="M2 19h6l4-7-3-5L2 19z"/>
+        <circle cx="6" cy="19" r="2.5" fill="#34A853"/>
+      </svg>
+      <span>Google Ads</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="TikTok">
+        <path fill="#000" d="M19.6 6.3c-1.5-1-2.5-2.6-2.7-4.5h-3.4v14.4c0 1.8-1.4 3.3-3.3 3.3-1.8 0-3.3-1.5-3.3-3.3 0-1.8 1.5-3.3 3.3-3.3.4 0 .7.1 1 .2v-3.5c-.3 0-.7-.1-1-.1-3.7 0-6.7 3-6.7 6.7s3 6.7 6.7 6.7 6.7-3 6.7-6.7V9.5c1.4.9 3.1 1.5 5 1.5V7.6c-1-.1-1.7-.4-2.3-.8z"/>
+      </svg>
+      <span>TikTok Ads</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="Snapchat">
+        <path fill="#FFFC00" stroke="#000" stroke-width="0.5" d="M12 1c4.4 0 7.5 3.6 7.5 7.5 0 .5 0 1.4-.1 2.1.5.5 1.8 1.1 2.6 1.4-.4 1.1-2.4 1.8-3 2 .1.4.4 1.2 1.5 1.6.7.3 1.7.4 1.7.4s-.4 1.6-2.5 1.4c-.4 0-.6.2-.7.5-.2.7-.4 1.6-.4 1.6s-.5-.1-1.2-.1c-.5 0-1.1.1-1.6.4-.8.6-1.7 1.2-3.3 1.2s-2.4-.6-3.3-1.2c-.5-.3-1-.4-1.6-.4-.7 0-1.2.1-1.2.1s-.2-.9-.4-1.6c-.1-.3-.4-.5-.7-.5-2.1.2-2.5-1.4-2.5-1.4s1.1-.2 1.7-.4c1.1-.4 1.4-1.2 1.5-1.6-.6-.2-2.6-.9-3-2 .9-.4 2.1-1 2.6-1.4-.1-.7-.1-1.5-.1-2.1 0-4 3.1-7.5 7.5-7.5z"/>
+      </svg>
+      <span>Snapchat</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="App Store">
+        <rect x="2" y="2" width="20" height="20" rx="4.5" fill="#000"/>
+        <path fill="white" d="M8.8 15.7L7.3 18c-.3.5-.9.6-1.3.4-.5-.3-.6-.9-.4-1.3l1.1-1.9c1.3.4 2.2.2 3.1-.5zm9.4-.6h-2.6c-.2-.6-1-2.9-2.6-7.1-.3-.8-.9-2.4-1.7-4.7-.3.1-.3.1-.3.1-.7-.4-1.6-.2-2 .5L8.4 5l-.4-.7c-.3-.5-.9-.6-1.3-.4-.5.3-.6.9-.4 1.3l.9 1.6c-1.4 0-2.2 0-2.4.1-.5.1-.8.6-.7 1.1.1.5.6.8 1.1.7H10c.7 0 1.2-.5 1.2-1.1-.1-.5-.5-.9-1.1-1l1.7-3c.2.5.5 1.4 1 2.7l-3.6 6.3-.3.5h-.1c-.6 0-1.1.5-1.1 1.1s.5 1.1 1.1 1.1H18.2c.6 0 1.1-.5 1.1-1.1.1-.6-.4-1.1-1.1-1.1zm.5 0c.5 0 .9.3 1 .8l.6 1c.3.5.1 1.1-.4 1.3-.5.3-1.1.1-1.3-.4l-1.2-2.1c.7 0 1.1-.3 1.3-.6z"/>
+      </svg>
+      <span>App Store</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="Google Play">
+        <path fill="#00C7B7" d="M3.5 2.5C3.2 2.7 3 3.1 3 3.5v17c0 .4.2.8.5 1L13.3 12 3.5 2.5z"/>
+        <path fill="#FFC107" d="M17.6 9.4l-3.2-1.9-3.8 4.5 3.8 4.5 3.2-1.9c1.3-.7 1.3-2.5 0-3.2z"/>
+        <path fill="#F44336" d="M13.3 12L3.5 21.5c.3.2.7.2 1 0L17.6 14l-4.3-2z"/>
+        <path fill="#4CAF50" d="M3.5 2.5L13.3 12l4.3-2L4.5 2.5c-.3-.1-.7-.1-1 0z"/>
+      </svg>
+      <span>Google Play</span>
+    </div>
+
+    <div class="logo-cell">
+      <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" aria-label="Adapty">
+        <rect x="2" y="2" width="20" height="20" rx="5" fill="#7B5CE0"/>
+        <path fill="white" d="M12 6L6 18h12L12 6zm0 4l3 6H9l3-6z"/>
+      </svg>
+      <span>Adapty</span>
+    </div>
+  </div>
+
+  <div class="more-integ">
+    <span>+ 12 more integrations · iOS, Android, web</span>
+  </div>
+</section>
+
+<section class="problem-wrap">
+  <div class="problem-head">
+    <div class="problem-badge">
+      <span class="red-dot"></span>
+      <span>THE PROBLEM</span>
+    </div>
+    <h2 class="problem-title">
+      You have data.<br/>
+      <span class="muted">You still don't know what to do.</span>
+    </h2>
+    <p class="problem-sub">
+      Every subscription app founder we talk to has the same story. Too many dashboards, too little clarity.
+    </p>
+  </div>
+
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="card-bar indigo"></div>
+      <div class="card-icon indigo">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#11008F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"/>
+          <rect x="14" y="3" width="7" height="7"/>
+          <rect x="3" y="14" width="7" height="7"/>
+          <rect x="14" y="14" width="7" height="7"/>
+        </svg>
+      </div>
+      <h3>5 tools. 5 tabs. Still no answers.</h3>
+      <p>You switch between Mixpanel, Adjust, Meta Ads, RevenueCat, and your spreadsheet every morning — and still leave without knowing what to do next.</p>
+    </div>
+
+    <div class="problem-card">
+      <div class="card-bar coral"></div>
+      <div class="card-icon coral">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 6 v6 l4 2"/>
+        </svg>
+      </div>
+      <h3>You find out about problems too late.</h3>
+      <p>By the time you notice churn spiked or ROAS dropped, you've already lost thousands. Dashboards show the past. You need the future.</p>
+    </div>
+
+    <div class="problem-card">
+      <div class="card-bar amber"></div>
+      <div class="card-icon amber">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M12 1 v6 m0 10 v6 M4.2 4.2 l4.3 4.3 m7 7 l4.3 4.3 M1 12 h6 m10 0 h6 M4.2 19.8 l4.3-4.3 m7-7 l4.3-4.3"/>
+        </svg>
+      </div>
+      <h3>You spend hours on analysis, not growth.</h3>
+      <p>Your real job is building a great product. Instead you're buried in reports, trying to connect dots that should connect themselves.</p>
+    </div>
+  </div>
+
+  <div class="fix-banner">
+    <span class="fix-dot"></span>
+    <span>Madar AI fixes all three.</span>
+  </div>
+</section>
+
+<style>
+  .integ-wrap {
+    background: white;
+    padding: 64px 24px 48px;
+  }
+
+  .integ-head {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .integ-label {
+    color: #6B7280;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .logos-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .logo-cell {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 18px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-height: 90px;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .logo-cell:hover {
+    border-color: #11008F;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(17, 0, 143, 0.08);
+  }
+
+  .logo-cell span {
+    color: #111827;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .more-integ {
+    text-align: center;
+    margin-top: 24px;
+  }
+
+  .more-integ span {
+    color: #9CA3AF;
+    font-size: 12px;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  .problem-wrap {
+    background: linear-gradient(180deg, #FAFBFF 0%, #F0F2FF 100%);
+    padding: 80px 24px;
+  }
+
+  .problem-head {
+    text-align: center;
+    margin-bottom: 56px;
+  }
+
+  .problem-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    color: #B91C1C;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .red-dot {
+    width: 6px;
+    height: 6px;
+    background: #EF4444;
+    border-radius: 50%;
+  }
+
+  .problem-title {
+    color: #0A0070;
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    margin: 0 0 16px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .problem-title .muted { color: #6B7280; }
+
+  .problem-sub {
+    color: #6B7280;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .problem-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .card-bar.indigo { background: linear-gradient(90deg, #11008F, #2818D8); }
+  .card-bar.coral { background: linear-gradient(90deg, #EF4444, #F87171); }
+  .card-bar.amber { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+
+  .card-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .card-icon.indigo { background: rgba(17, 0, 143, 0.08); }
+  .card-icon.coral { background: rgba(239, 68, 68, 0.08); }
+  .card-icon.amber { background: rgba(245, 158, 11, 0.10); }
+
+  .problem-card h3 {
+    color: #0A0070;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+
+  .problem-card p {
+    color: #6B7280;
+    font-size: 14px;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .fix-banner {
+    margin: 48px auto 0;
+    width: fit-content;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #11008F, #2818D8);
+    padding: 12px 28px;
+    border-radius: 100px;
+    box-shadow: 0 8px 24px rgba(17, 0, 143, 0.3);
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  .problem-wrap > .fix-banner {
+    display: flex;
+    justify-content: center;
+    margin: 48px auto 0;
+    text-align: center;
+  }
+
+  .fix-banner {
+    display: flex !important;
+    justify-content: center;
+    width: fit-content;
+    margin: 48px auto 0;
+  }
+
+  .fix-dot {
+    width: 6px;
+    height: 6px;
+    background: #10F0A0;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #10F0A0;
+  }
+
+  @media (max-width: 768px) {
+    .logos-grid { grid-template-columns: repeat(3, 1fr); }
+    .problem-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .logos-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
