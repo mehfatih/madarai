@@ -1,0 +1,8 @@
+---
+// Arabic apex login → app.madarai.co/login with ?lang=ar to seed the
+// dashboard's locale on first visit.
+const params = new URLSearchParams(Astro.url.search);
+params.set("lang", "ar");
+const target = `https://app.madarai.co/login?${params.toString()}`;
+return Astro.redirect(target, 302);
+---

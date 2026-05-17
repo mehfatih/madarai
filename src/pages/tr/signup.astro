@@ -1,0 +1,9 @@
+---
+// Turkish apex signup → app.madarai.co/signup with ?lang=tr to seed the
+// dashboard's locale on first visit. Existing query params (utm_*, etc.)
+// are preserved alongside the lang hint.
+const params = new URLSearchParams(Astro.url.search);
+params.set("lang", "tr");
+const target = `https://app.madarai.co/signup?${params.toString()}`;
+return Astro.redirect(target, 302);
+---
